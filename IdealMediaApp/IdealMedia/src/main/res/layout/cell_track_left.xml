@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_page_L"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false">
+
+    <libs.MaterialRippleLayout
+        style="@style/track_ripple"
+        android:id="@+id/actionSearchAuthor"
+        tools:ignore="RtlHardcoded">
+
+        <LinearLayout
+            style="@style/track_cell_action"
+            android:background="?colorTrackCellActionSearchBg">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_search_author"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/textSearchAuthor"
+                style="@style/track_cell_action_text"
+                android:text="@string/track_action__search_artist" />
+        </LinearLayout>
+    </libs.MaterialRippleLayout>
+
+    <libs.MaterialRippleLayout
+        style="@style/track_ripple"
+        android:id="@+id/actionToPlaylist"
+        tools:ignore="RtlHardcoded">
+
+        <LinearLayout
+            style="@style/track_cell_action"
+            android:background="?colorTrackCellActionToPlaylistBg">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_menu_playlists"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                style="@style/track_cell_action_text"
+                android:text="@string/track_action__to_playlist" />
+        </LinearLayout>
+    </libs.MaterialRippleLayout>
+    <libs.MaterialRippleLayout
+        style="@style/track_ripple"
+        android:id="@+id/actionFromPlaylist"
+        android:visibility="gone"
+        tools:ignore="RtlHardcoded">
+
+        <LinearLayout
+            style="@style/track_cell_action"
+            android:background="?colorTrackCellActionToPlaylistBg">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_menu_playlists"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                style="@style/track_cell_action_text"
+                android:text="@string/track_action__from_playlist" />
+        </LinearLayout>
+    </libs.MaterialRippleLayout>
+
+</LinearLayout>
+
+    

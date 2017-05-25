@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<libs.MaterialRippleLayout
+    style="@style/click_ripple"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_page_0">
+
+    <LinearLayout
+        android:background="?colorPlaylists"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@android:id/icon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:visibility="gone"
+            android:src="@drawable/ic_playlist_set_default"
+            tools:ignore="ContentDescription,RtlHardcoded" />
+
+        <TextView
+            android:id="@android:id/text1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="20dp"
+            android:textSize="22sp"
+            android:lines="1"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="?colorTrackCellTitle" />
+
+    </LinearLayout>
+</libs.MaterialRippleLayout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_page_R"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <libs.MaterialRippleLayout
+        style="@style/track_ripple"
+        android:id="@+id/actionDropPlaylist"
+        android:layout_alignParentRight="true"
+        tools:ignore="RtlHardcoded">
+
+        <LinearLayout
+            style="@style/track_cell_action"
+            android:background="?colorPlaylistCellActionDrop">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_remove_playlist" />
+
+            <TextView
+                android:id="@+id/textDropPlaylist"
+                style="@style/track_cell_action_text"
+                android:text="@string/playlist_action__drop" />
+        </LinearLayout>
+    </libs.MaterialRippleLayout>
+
+</LinearLayout>

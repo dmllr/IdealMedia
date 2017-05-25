@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="colorDefaultBg" format="reference|color"/>
+    <attr name="colorDefaultSublayerBg" format="reference|color"/>
+
+    <attr name="drawableHeadBackground" format="reference|color"/>
+    <attr name="colorPlaylists" format="reference|color"/>
+    <attr name="drawablePlaylistsSubLine" format="reference"/>
+    <attr name="colorVK" format="reference|color"/>
+    <attr name="drawableVKSubLine" format="reference"/>
+    <attr name="colorFolders" format="reference|color"/>
+    <attr name="drawableFoldersSubLine" format="reference"/>
+    <attr name="colorPreferences" format="reference|color"/>
+    <attr name="drawablePreferenceLine" format="reference"/>
+    <attr name="colorEqualizer" format="reference|color"/>
+    <attr name="colorMenuText" format="reference|color"/>
+    <attr name="colorMenuTint" format="reference|color"/>
+
+    <attr name="colorTrackCellIndex" format="reference|color"/>
+    <attr name="colorTrackCellTitle" format="reference|color"/>
+    <attr name="colorTrackCellArtist" format="reference|color"/>
+    <attr name="colorTrackCellTime" format="reference|color"/>
+    <attr name="colorTrackCellIndexBg" format="reference|color"/>
+    <attr name="colorTrackCellActionDownloadBg" format="reference|color"/>
+    <attr name="colorTrackCellActionSearchBg" format="reference|color"/>
+    <attr name="colorTrackCellActionRingtoneBg" format="reference|color"/>
+    <attr name="colorTrackCellActionToPlaylistBg" format="reference|color"/>
+    <attr name="drawableTrackCellDownloadIdle" format="reference"/>
+    <attr name="drawableTrackDivider" format="reference"/>
+
+    <attr name="colorPlaylistCellActionEdit" format="reference|color"/>
+    <attr name="colorPlaylistCellActionDrop" format="reference|color"/>
+    <attr name="colorPlaylistCellActionSetDefault" format="reference|color"/>
+
+    <attr name="colorPreferenceCellText" format="reference|color"/>
+    <attr name="colorPreferenceCellSubtext" format="reference|color"/>
+
+    <attr name="colorFolderCellTitle" format="reference|color"/>
+
+    <attr name="colorPlaylistTitle" format="reference|color"/>
+
+    <attr name="colorNegative" format="reference"/>
+    <attr name="colorPositive" format="reference"/>
+</resources>

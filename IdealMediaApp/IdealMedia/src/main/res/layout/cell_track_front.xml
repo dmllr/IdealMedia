@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<libs.MaterialRippleLayout
+    style="@style/click_ripple"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_page_0">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        tools:showIn="@layout/track_cell">
+
+        <libs.CircularProgressButton
+            android:id="@+id/cell_index"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:textSize="22sp"
+            android:textColor="?colorTrackCellIndex"
+            android:text="999"
+            app:cpb_selectorIdle="@drawable/track_index_progress_idle"
+            app:cpb_colorIndicator="#fff"
+            app:cpb_colorIndicatorBackground="#55ffffff"
+            app:cpb_colorProgress="?colorTrackCellIndexBg"
+            tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry" />
+
+        <TextView
+            android:id="@+id/cell_title"
+            android:layout_toRightOf="@+id/cell_index"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:lines="2"
+            android:maxLines="2"
+            android:textColor="?colorTrackCellTitle"
+            android:text="Title"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/cell_artist"
+            android:layout_below="@id/cell_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/cell_index"
+            android:textSize="16sp"
+            android:textColor="?colorTrackCellArtist"
+            android:lines="1"
+            android:maxLines="1"
+            android:text="Artist"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+
+        <ImageView
+            android:id="@+id/cell_artwork"
+            android:layout_alignParentRight="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_default_album"
+            android:layout_width="240dp"
+            android:layout_height="80dp"
+            tools:ignore="ContentDescription,RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/cell_duration"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="4dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:textSize="16sp"
+            android:textColor="?colorTrackCellTime"
+            android:text="0:00"
+            tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="?drawableTrackDivider" />
+
+    </RelativeLayout>
+</libs.MaterialRippleLayout>

@@ -1,0 +1,57 @@
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.armedarms.idealmedia.NavigationActivity">
+
+    <libs.SlidingUpPanelLayout
+        xmlns:sothree="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/sliding_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        sothree:umanoPanelHeight="68dp"
+        sothree:umanoParalaxOffset="40dp"
+        sothree:umanoOverlay="false"
+        sothree:umanoShadowHeight="4dp">
+
+        <com.armedarms.idealmedia.tools.SwipeRefreshLayout
+            android:id="@+id/swipeRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <FrameLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </com.armedarms.idealmedia.tools.SwipeRefreshLayout>
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            layout="@layout/include_player_controller" />
+
+    </libs.SlidingUpPanelLayout>
+
+
+    <fragment
+        android:id="@+id/left_navigation_drawer"
+        android:layout_width="@dimen/navigation_drawer_width"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:name="com.armedarms.idealmedia.fragments.NavigationDrawerFragment"
+        tools:layout="@layout/fragment_navigation_drawer" />
+    <fragment
+        android:id="@+id/right_navigation_drawer"
+        android:layout_width="@dimen/navigation_drawer_width"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:name="com.armedarms.idealmedia.fragments.SettingsDrawerFragment"
+        tools:layout="@layout/fragment_settings_drawer" />
+
+</android.support.v4.widget.DrawerLayout>

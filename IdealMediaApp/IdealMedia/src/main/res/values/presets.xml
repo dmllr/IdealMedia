@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="preset_reset">
+        <item>15</item>
+        <item>15</item>
+        <item>15</item>
+        <item>15</item>
+        <item>15</item>
+        <item>15</item>
+        <item>15</item>
+        <item>15</item>
+        <item>15</item>
+        <item>15</item>
+    </integer-array>
+    <integer-array name="preset_headphones_ie">
+        <item>15</item>
+        <item>17</item>
+        <item>15</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>15</item>
+        <item>17</item>
+        <item>15</item>
+        <item>15</item>
+    </integer-array>
+    <integer-array name="preset_headphones">
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>14</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>16</item>
+        <item>17</item>
+    </integer-array>
+    <integer-array name="preset_speaker">
+        <item>10</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>15</item>
+        <item>15</item>
+        <item>15</item>
+    </integer-array>
+    <integer-array name="preset_loudspeaker">
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>15</item>
+        <item>15</item>
+        <item>15</item>
+        <item>15</item>
+        <item>15</item>
+        <item>15</item>
+        <item>15</item>
+    </integer-array>
+</resources>

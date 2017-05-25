@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<libs.MaterialRippleLayout
+    style="@style/click_ripple"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_page_0">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="?colorFolders"
+        tools:showIn="@layout/folder_cell">
+
+        <TextView
+            android:id="@+id/section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="6dip"
+            android:paddingBottom="6dip"
+            android:paddingLeft="9dip"
+            android:textColor="?attr/colorPlaylistTitle"
+            android:text="A"
+            android:textStyle="bold"
+            android:textSize="@dimen/medium_text"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="A"
+            android:lines="2"
+            android:maxLines="2"
+            android:textColor="?colorFolderCellTitle"
+            android:layout_marginLeft="10dp"
+            android:singleLine="false"
+            android:gravity="center_vertical"
+            android:textSize="22sp"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?drawableTrackDivider" />
+
+    </LinearLayout>
+</libs.MaterialRippleLayout>

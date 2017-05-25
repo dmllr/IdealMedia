@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<libs.MaterialRippleLayout xmlns:tools="http://schemas.android.com/tools"
+    style="@style/click_ripple"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <com.armedarms.idealmedia.utils.SquaredImageView
+            android:id="@android:id/icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_default_album"
+            android:scaleType="centerCrop"
+            tools:ignore="ContentDescription" />
+
+</libs.MaterialRippleLayout>

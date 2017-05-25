@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.IdealMedia.Colored" parent="Theme.AppCompat.Light.DarkActionBar">
+
+        <item name="colorAccent">#fff</item>
+
+        <item name="android:seekBarStyle">@style/PlayingSeekBar</item>
+
+        <item name="colorDefaultBg">#1e1e1e</item>
+        <item name="colorDefaultSublayerBg">#991e1e1e</item>
+
+        <item name="drawableHeadBackground">@drawable/bg_menu_search</item>
+
+        <item name="colorPlaylists">#794aa6</item>
+        <item name="drawablePlaylistsSubLine">@drawable/bg_menu_line_1_sub__colored</item>
+
+        <item name="colorVK">#db8d5d</item>
+        <item name="drawableVKSubLine">@drawable/bg_menu_line_2_sub__colored</item>
+
+        <item name="colorFolders">#56b66f</item>
+        <item name="drawableFoldersSubLine">@drawable/bg_menu_line_3_sub__colored</item>
+
+        <item name="colorPreferences">#51bfbc</item>
+        <item name="drawablePreferenceLine">@drawable/bg_preference_line__colored</item>
+
+        <item name="colorEqualizer">#3f51b5</item>
+
+        <item name="colorMenuText">@color/primary_text_color__colored</item>
+
+        <item name="colorMenuTint">#00000000</item>
+
+        <item name="colorTrackCellIndex">@color/primary_text_color__colored</item>
+        <item name="colorTrackCellTitle">#eee</item>
+        <item name="colorTrackCellArtist">@color/secondary_text_color__colored</item>
+        <item name="colorTrackCellTime">@color/secondary_text_color__colored</item>
+        <item name="colorTrackCellIndexBg">#33ffffff</item>
+        <item name="colorTrackCellActionDownloadBg">#ff6e40</item>
+        <item name="colorTrackCellActionSearchBg">#6889ff</item>
+        <item name="colorTrackCellActionRingtoneBg">#259b24</item>
+        <item name="colorTrackCellActionToPlaylistBg">#e040fb</item>
+        <item name="drawableTrackCellDownloadIdle">@drawable/track_download_progress_idle__colored</item>
+        <item name="drawableTrackDivider">@drawable/selector_divider__colored</item>
+
+        <item name="colorPlaylistCellActionEdit">#259b24</item>
+        <item name="colorPlaylistCellActionDrop">#ff6e40</item>
+        <item name="colorPlaylistCellActionSetDefault">#6889ff</item>
+
+        <item name="colorPreferenceCellText">@color/primary_text_color__colored</item>
+        <item name="colorPreferenceCellSubtext">@color/secondary_text_color__colored</item>
+
+        <item name="colorFolderCellTitle">@color/primary_text_color__colored</item>
+
+        <item name="colorPlaylistTitle">@android:color/black</item>
+
+        <item name="colorNegative">@color/negative__colored</item>
+        <item name="colorPositive">@color/positive__colored</item>
+    </style>
+</resources>

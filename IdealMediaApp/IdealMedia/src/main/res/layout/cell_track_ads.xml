@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/track_cell_front"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:showIn="@layout/track_cell">
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        app:adSize="SMART_BANNER"
+        app:adUnitId="@string/admob_inlist_banner">
+    </com.google.android.gms.ads.AdView>
+
+    <libs.MaterialRippleLayout style="@style/menu_ripple">
+        <LinearLayout
+            android:id="@+id/adViewOffline"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:background="@drawable/bg_offline_ads"
+            android:gravity="center_vertical"
+            android:clickable="true"
+            android:visibility="gone">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:src="@drawable/ic_premium" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:layout_marginLeft="16dp"
+                android:textColor="?colorTrackCellTitle"
+                android:text="@string/become_premium" />
+        </LinearLayout>
+    </libs.MaterialRippleLayout>
+
+</RelativeLayout>

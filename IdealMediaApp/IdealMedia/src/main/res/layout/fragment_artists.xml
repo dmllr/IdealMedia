@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <libs.CircularProgressButton
+        android:id="@android:id/progress"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@android:id/empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_pull_down_to_refresh"
+        android:visibility="gone"
+        tools:ignore="ContentDescription" />
+
+</RelativeLayout>

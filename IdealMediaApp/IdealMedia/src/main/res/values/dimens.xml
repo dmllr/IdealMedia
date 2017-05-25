@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="medium_text">18sp</dimen>
+    <dimen name="small_text">14sp</dimen>
+    <dimen name="navigation_drawer_width">320dp</dimen>
+    <dimen name="menu_text_size">25sp</dimen>
+    <dimen name="preference_text_size">18sp</dimen>
+    <dimen name="preference_text_subsize">12sp</dimen>
+    <dimen name="artist_cell_height">128dp</dimen>
+
+</resources>

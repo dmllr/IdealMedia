@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scan_filesystem_title">Scan for media</string>
+    <string name="scan_filesystem_question">I can search the device for all supported audio files.\nThis should take no more than a few minutes.</string>
+    <string name="shuffle_is">Shuffle is:</string>
+    <string name="dlg_choosedir_title">Select audio containing directory</string>
+
+    <string name="set_as_ringtone_error">There was an error while setting ringtone</string>
+    <string name="set_as_ringtone">Track was set as ringtone</string>
+    <string name="set_as_ringtone_question">This track will be set as ringtone</string>
+
+    <string name="search">Search for</string>
+
+    <string name="menu_playlists">PLAYLISTS</string>
+    <string name="menu_all_music">All music</string>
+    <string name="menu_now_playing">Now playing</string>
+    <string name="menu_vk">VK</string>
+    <string name="menu_vk_popular">Popular tracks</string>
+    <string name="menu_vk_recommendations">Recommendations</string>
+    <string name="menu_on_device">MY DEVICE</string>
+    <string name="menu_folders">Files and folders</string>
+    <string name="menu_artists">Artists</string>
+    <string name="menu_albums">Albums</string>
+    <string name="hint_search">Search</string>
+
+    <string name="title_now_playing">Now playing</string>
+    <string name="title_vk">VK Wall</string>
+    <string name="title_vk_popular">Popular tracks</string>
+    <string name="title_vk_recommendations">Recommendations</string>
+    <string name="title_vk_search">Search results</string>
+    <string name="title_folders">Files and folders</string>
+    <string name="title_artists">Artists</string>
+    <string name="title_albums">Albums</string>
+    <string name="title_playlists">Playlists</string>
+    <string name="title_selected_tracks">Selected tracks</string>
+
+    <string name="like_text">Awesome app to listen music on the device and online via vk.com. Stunningly clear sound. Search, listen, download, set as ringtone.</string>
+    <string name="like_text_twitter">Awesome app to listen music on the device and online via vk.com. Search, download, set as ringtone.</string>
+    <string name="like_url_title">At Google Play</string>
+    <string name="like_thanks_for_sharing">Friends, thank you for sharing the experience of using the %s player!</string>
+
+    <string name="no_email_client">There are no email clients installed.</string>
+    <string name="vk_empty_list">VK doesn\'t return any tracks. Please try to refresh list some moments later.</string>
+    <string name="recently_added">Recently added tracks</string>
+
+    <string name="track_action__set_as_ringtone">Set as ringtone</string>
+    <string name="track_action__share">Share</string>
+    <string name="track_action__search_artist">Search for %s</string>
+    <string name="track_action__to_playlist">Add to working playlist</string>
+    <string name="track_action__from_playlist">Remove from playlist</string>
+    <string name="track_action__download">Download</string>
+    <string name="become_premium">Become premium</string>
+    <string name="no_search_results">No results were found</string>
+    <string name="not_logged_in">Not logged in VK, only local search results shown</string>
+
+    <string name="playlist_action__edit">Edit</string>
+    <string name="playlist_action__drop">Remove</string>
+    <string name="playlist_cell_action_set_as_default">Set as working playlist</string>
+
+    <string name="text_loading">Loading…</string>
+    <string name="text_no_market_app">Could not open Google Play</string>
+
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="settings_head_premium">PREMIUM</string>
+    <string name="settings_premium">Become premium at a discount</string>
+    <string name="settings_premium_thanks">Thank you for your support and we hope that will not disappoint you</string>
+    <string name="settings_premium_you_are_premium">You are premium user</string>
+    <string name="settings_head_directories">PATHS</string>
+    <string name="settings_media_path">Media search root path</string>
+    <string name="settings_media_method">Media search method</string>
+    <string name="settings_media_method_quick">QUICK, but some rare file types might not be found</string>
+    <string name="settings_media_method_full">FULL, should find everything</string>
+    <string name="settings_download_path">Download path</string>
+    <string name="settings_head_media">MEDIA</string>
+    <string name="settings_equalizer">Equalizer</string>
+    <string name="settings_head_theme">THEME</string>
+    <string name="settings_head_personal">PERSONAL</string>
+    <string name="settings_foreign_popular">Only non-russian popular tracks</string>
+    <string name="settings_logout_vk">Logout VK</string>
+    <string name="settings_app_will_be_restarted">Application will be restarted</string>
+
+    <string name="action_new_playlist">New</string>
+    <string name="title_new_playlist">Create new playlist</string>
+    <string name="hint_new_playlist">Playlist title</string>
+    <string name="title_playlist_not_set">Working playlist is not set. Please select one from list below</string>
+    <string name="added_to_playlist">Track was added to \"%s\"</string>
+    <string name="playback_history">Playback history</string>
+    <string name="do_you_like_me">Do you like this app?</string>
+
+    <string name="equalizer_hint">Draw the entire EQ curve with a single gesture or expose value of the desired band by tap</string>
+    <string name="equalizer_reset">Reset</string>
+
+    <string name="toast_interstitial">Full-screen ads would appear no more than once in 7 days, thank you for your support!</string>
+    <string name="toast_purchase_failed">Purchase failed</string>
+    <string name="toast_no_possible_purchase">No connection to Google\'s servers</string>
+
+    <string-array name="themes_array">
+        <item>Colored</item>
+        <item>Colored dark</item>
+        <item>Classic dark</item>
+    </string-array>
+
+    <string-array name="presets_array">
+        <item>Reset</item>
+        <item>In-ear headphones</item>
+        <item>Headphone ear pads</item>
+        <item>Phone speaker</item>
+        <item>Loudspeakers</item>
+    </string-array>
+</resources>

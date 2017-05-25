@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scan_filesystem_title">Пошук музики</string>
+    <string name="scan_filesystem_question">"Я можу знайти на пристрої всі підтримувані аудіофайли \ nЕто займе не більше декількох хвилин."</string>
+    <string name="shuffle_is">"Випадковий режим:"</string>
+    <string name="dlg_choosedir_title">"Виберіть директорію з музикою"</string>
+
+    <string name="set_as_ringtone_error">"Не вдалося устновіть трек як рингтон"</string>
+    <string name="set_as_ringtone">"Трек встановлений як рингтон"</string>
+    <string name="set_as_ringtone_question">"Трек буде встановлений як рингтон"</string>
+
+    <string name="search">"Шукати"</string>
+
+    <string name="menu_playlists">"Плейлисти"</string>
+    <string name="menu_all_music">Вся музика</string>
+    <string name="menu_now_playing">"Зараз в плеєрі"</string>
+    <string name="menu_vk">"VK"</string>
+    <string name="menu_vk_popular">"Популярне"</string>
+    <string name="menu_vk_recommendations">Рекомендації</string>
+    <string name="menu_on_device">"НА ПРИСТРІЙ"</string>
+    <string name="menu_folders">"Каталоги і файли"</string>
+    <string name="menu_artists">"Виконавці"</string>
+    <string name="menu_albums">"Альбоми"</string>
+    <string name="hint_search">"Пошук"</string>
+    <string name="title_playlists">Плейлистi</string>
+
+    <string name="title_now_playing">"У плеєрі"</string>
+    <string name="title_vk">"VK Стіна"</string>
+    <string name="title_vk_popular">"Популярне"</string>
+    <string name="title_vk_recommendations">Рекомендації</string>
+    <string name="title_vk_search">"Результат пошуку"</string>
+    <string name="title_folders">"Директорії та файли"</string>
+    <string name="title_artists">"Виконавці"</string>
+    <string name="title_albums">"Альбоми"</string>
+    <string name="title_selected_tracks">Обрані треки</string>
+
+    <string name="like_text">"Приголомшливе додаток для прослуховування музики що зберігається на пристрої та онлайн з vk.com. Найчистіше звук. Шукай, слухай, скачуй, ставь на дзвінок."</string>
+    <string name="like_text_twitter">"Приголомшливе додаток для прослуховування музики на телефоні і онлайн з vk.com"</string>
+    <string name="like_url_title">"В Google Play"</string>
+    <string name="like_thanks_for_sharing">"Спасибі, що поділилися радістю використання плеєра %s з друзями!"</string>
+
+    <string name="no_email_client">"Не знайдено поштової програми"</string>
+    <string name="vk_empty_list">"VK не повернув аудіозаписи. Спробуйте оновити список трохи пізніше."</string>
+    <string name="recently_added">Нещодавно додані</string>
+
+    <string name="track_action__set_as_ringtone">"Встановити як рингтон"</string>
+    <string name="track_action__share">Поділитися</string>
+    <string name="track_action__search_artist">"Шукати %s"</string>
+    <string name="track_action__to_playlist">В робочий плейлист</string>
+    <string name="track_action__from_playlist">Видалити з плейлиста</string>
+    <string name="track_action__download">"Завантажити"</string>
+    <string name="become_premium">Переходь на Преміум</string>
+    <string name="no_search_results">Нічого не знайдено</string>
+    <string name="not_logged_in">Не зареєстрований в VK</string>
+
+    <string name="playlist_action__edit">Редагувати</string>
+    <string name="playlist_action__drop">Видалити</string>
+    <string name="playlist_cell_action_set_as_default">Зробити плейлист робочим</string>
+
+    <string name="text_loading">"Завантажується…"</string>
+    <string name="text_no_market_app">"Не вдається відкрити Google Play"</string>
+
+    <string name="yes">"Так"</string>
+    <string name="no">"Ні"</string>
+
+    <string name="settings_head_premium">PREMIUM</string>
+    <string name="settings_premium">Придбати преміальний режим зі знижкою</string>
+    <string name="settings_premium_thanks">Дякуємо за підтримку і сподіваємося, що ні розчаруємо Вас</string>
+    <string name="settings_premium_you_are_premium">Ви преміум пользователь</string>
+    <string name="settings_head_directories">"ШЛЯХИ"</string>
+    <string name="settings_media_path">"Пошук медіафайлів"</string>
+    <string name="settings_media_method">Метод пошуку</string>
+    <string name="settings_media_method_quick">ШВИДКИЙ, деякі рідкісні типи файлів можуть бути не знайдені</string>
+    <string name="settings_media_method_full">ПОВНИЙ, знайдеться все, що підтримується</string>
+    <string name="settings_download_path">"Скачування музики"</string>
+    <string name="settings_head_media">МЕДІА</string>
+    <string name="settings_equalizer">Еквалайзер</string>
+    <string name="settings_head_theme">ТЕМА</string>
+    <string name="settings_head_personal">"ПЕРСОНАЛЬНІ"</string>
+    <string name="settings_foreign_popular">"Тільки іноземний ТОП VK"</string>
+    <string name="settings_logout_vk">"Вийти з VK"</string>
+    <string name="settings_app_will_be_restarted">Програма перезапуститься</string>
+
+    <string name="action_new_playlist">Новiй</string>
+    <string name="title_new_playlist">Створити плейлист</string>
+    <string name="hint_new_playlist">Найменування</string>
+    <string name="title_playlist_not_set">Жоден плейлист не обрана як робочий. Виберіть його зі списку</string>
+    <string name="added_to_playlist">Трек додан до \"%s\"</string>
+    <string name="playback_history">Історія програвання</string>
+    <string name="do_you_like_me">Вам подобається ця програма?</string>
+
+    <string name="equalizer_hint">Намалюйте всю криву еквалайзера одним жестом або тапом виставите значення потрібного діапазону</string>
+    <string name="equalizer_reset">Скид</string>
+
+    <string name="toast_interstitial">Повноекранна реклама буде з\'являтися не частіше одного разу на 7 днів, спасибі за підтримку!</string>
+    <string name="toast_purchase_failed">Покупка не проведена</string>
+    <string name="toast_no_possible_purchase">Немає з\'єднання з серверами Google</string>
+
+    <string-array name="themes_array">
+        <item>Кольорова</item>
+        <item>Кольорова темна</item>
+        <item>Класична темна</item>
+    </string-array>
+
+    <string-array name="presets_array">
+        <item>Скид</item>
+        <item>Навушники внутрішнього типу</item>
+        <item>Навушники</item>
+        <item>Вбудований динамік</item>
+        <item>Колонки</item>
+    </string-array>
+</resources>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.IdealMedia.Colored.Dark" parent="Theme.AppCompat.Light.DarkActionBar">
+
+        <item name="colorAccent">#fff</item>
+
+        <item name="android:seekBarStyle">@style/PlayingSeekBar</item>
+
+        <item name="colorDefaultBg">#1e1e1e</item>
+        <item name="colorDefaultSublayerBg">#991e1e1e</item>
+
+        <item name="drawableHeadBackground">@drawable/bg_menu_search</item>
+
+        <item name="colorPlaylists">#ff342048</item>
+        <item name="drawablePlaylistsSubLine">@drawable/bg_menu_line_1_sub__colored_dark</item>
+
+        <item name="colorVK">#ff734b31</item>
+        <item name="drawableVKSubLine">@drawable/bg_menu_line_2_sub__colored_dark</item>
+
+        <item name="colorFolders">#ff295634</item>
+        <item name="drawableFoldersSubLine">@drawable/bg_menu_line_3_sub__colored_dark</item>
+
+        <item name="colorPreferences">#ff275b5a</item>
+        <item name="drawablePreferenceLine">@drawable/bg_preference_line__colored_dark</item>
+
+        <item name="colorEqualizer">#ff1e2652</item>
+
+        <item name="colorMenuText">#aaffffff</item>
+
+        <item name="colorMenuTint">#55000000</item>
+
+        <item name="colorTrackCellIndex">@color/primary_text_color__colored_dark</item>
+        <item name="colorTrackCellTitle">#aaeeeeee</item>
+        <item name="colorTrackCellArtist">@color/secondary_text_color__colored_dark</item>
+        <item name="colorTrackCellTime">@color/secondary_text_color__colored_dark</item>
+        <item name="colorTrackCellIndexBg">#33ffffff</item>
+        <item name="colorTrackCellActionDownloadBg">#ff7d3a22</item>
+        <item name="colorTrackCellActionSearchBg">#ff383d7d</item>
+        <item name="colorTrackCellActionRingtoneBg">#ff155614</item>
+        <item name="colorTrackCellActionToPlaylistBg">#ff751d81</item>
+        <item name="drawableTrackCellDownloadIdle">@drawable/track_download_progress_idle__colored_dark</item>
+        <item name="drawableTrackDivider">@drawable/selector_divider__colored_dark</item>
+
+        <item name="colorPlaylistCellActionEdit">#ff155915</item>
+        <item name="colorPlaylistCellActionDrop">#ff79341e</item>
+        <item name="colorPlaylistCellActionSetDefault">#ff364784</item>
+
+        <item name="colorPreferenceCellText">@color/primary_text_color__colored_dark</item>
+        <item name="colorPreferenceCellSubtext">@color/secondary_text_color__colored_dark</item>
+
+        <item name="colorFolderCellTitle">@color/primary_text_color__colored_dark</item>
+
+        <item name="colorPlaylistTitle">@color/secondary_text_color__colored_dark</item>
+
+        <item name="colorNegative">@color/negative__colored_dark</item>
+        <item name="colorPositive">@color/positive__colored_dark</item>
+    </style>
+</resources>

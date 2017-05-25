@@ -1,0 +1,129 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?colorPreferences"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/preference_header_line"
+            android:text="@string/settings_head_premium" />
+        <libs.MaterialRippleLayout style="@style/menu_ripple">
+            <LinearLayout
+                style="@style/preference_line"
+                android:id="@+id/preference_purchase_premium" >
+                <TextView
+                    style="@style/preference_line_text"
+                    android:id="@+id/textPurchasePremium"
+                    android:text="@string/settings_premium"/>
+                <TextView
+                    style="@style/preference_line_subtext"
+                    android:text="@string/settings_premium_thanks"/>
+            </LinearLayout>
+        </libs.MaterialRippleLayout>
+        <TextView
+            style="@style/preference_header_line"
+            android:text="@string/settings_head_directories" />
+        <libs.MaterialRippleLayout style="@style/menu_ripple">
+            <LinearLayout
+                style="@style/preference_line"
+                android:id="@+id/preference_media_method" >
+                <TextView
+                    style="@style/preference_line_text"
+                    android:text="@string/settings_media_method"/>
+                <TextView
+                    style="@style/preference_line_subtext"
+                    android:id="@+id/textMediaMethod"
+                    android:text="@string/settings_media_method_quick"/>
+            </LinearLayout>
+        </libs.MaterialRippleLayout>
+        <libs.MaterialRippleLayout style="@style/menu_ripple">
+            <LinearLayout
+                style="@style/preference_line"
+                android:id="@+id/preference_media_path" >
+                <TextView
+                    style="@style/preference_line_text"
+                    android:text="@string/settings_media_path"/>
+                <TextView
+                    style="@style/preference_line_subtext"
+                    android:id="@+id/textMediaPath"
+                    android:text="/"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+        </libs.MaterialRippleLayout>
+        <libs.MaterialRippleLayout style="@style/menu_ripple"
+            android:visibility="gone">
+            <LinearLayout
+                style="@style/preference_line"
+                android:id="@+id/preference_download_path" >
+                <TextView
+                    style="@style/preference_line_text"
+                    android:text="@string/settings_download_path"/>
+                <TextView
+                    style="@style/preference_line_subtext"
+                    android:text="/"/>
+            </LinearLayout>
+        </libs.MaterialRippleLayout>
+
+        <TextView
+            style="@style/preference_header_line"
+            android:text="@string/settings_head_media" />
+        <libs.MaterialRippleLayout style="@style/menu_ripple">
+            <LinearLayout
+                style="@style/preference_line"
+                android:id="@+id/preference_equalizer" >
+                <TextView
+                    style="@style/preference_line_text"
+                    android:text="@string/settings_equalizer"/>
+            </LinearLayout>
+        </libs.MaterialRippleLayout>
+
+        <TextView
+            style="@style/preference_header_line"
+            android:text="@string/settings_head_theme" />
+        <LinearLayout
+            style="@style/preference_line"
+            android:id="@+id/preference_theme"
+            tools:ignore="RtlHardcoded">
+            <TextView
+                style="@style/preference_line_text"
+                android:text="@string/settings_app_will_be_restarted"/>
+            <Spinner
+                android:id="@+id/theme_list"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginLeft="-9dp"/>
+        </LinearLayout>
+
+        <TextView
+            style="@style/preference_header_line"
+            android:text="@string/settings_head_personal" />
+        <libs.MaterialRippleLayout style="@style/menu_ripple">
+            <LinearLayout
+                style="@style/preference_line"
+                android:id="@+id/preference_foreign_popular" >
+                <TextView
+                    style="@style/preference_line_text"
+                    android:text="@string/settings_foreign_popular"/>
+                <TextView
+                    style="@style/preference_line_subtext"
+                    android:id="@+id/textForeignVKPopular"
+                    android:text="@string/no"/>
+            </LinearLayout>
+        </libs.MaterialRippleLayout>
+        <libs.MaterialRippleLayout style="@style/menu_ripple">
+            <LinearLayout
+                style="@style/preference_line"
+                android:id="@+id/preference_logout_vk" >
+                <TextView
+                    style="@style/preference_line_text"
+                    android:text="@string/settings_logout_vk"/>
+            </LinearLayout>
+        </libs.MaterialRippleLayout>
+    </LinearLayout>
+</ScrollView>

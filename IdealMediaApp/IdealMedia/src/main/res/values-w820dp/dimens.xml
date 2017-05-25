@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="artist_cell_height">256dp</dimen>
+
+</resources>

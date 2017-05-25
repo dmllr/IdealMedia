@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_page_R"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <libs.MaterialRippleLayout
+        style="@style/track_ripple"
+        android:id="@+id/actionDownload"
+        tools:ignore="RtlHardcoded">
+
+        <FrameLayout style="@style/track_cell_action"
+            android:background="?colorTrackCellActionDownloadBg">
+
+            <libs.CircularProgressButton
+                android:id="@+id/track_cell_progress_download"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                app:cpb_selectorIdle="?drawableTrackCellDownloadIdle"
+                app:cpb_colorIndicator="?colorTrackCellIndex"
+                app:cpb_colorIndicatorBackground="?colorTrackCellActionDownloadBg"
+                app:cpb_colorProgress="?colorTrackCellActionDownloadBg" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_download"
+                tools:ignore="ContentDescription" />
+        </FrameLayout>
+    </libs.MaterialRippleLayout>
+
+    <libs.MaterialRippleLayout
+        style="@style/track_ripple"
+        android:id="@+id/actionSetRingtone"
+        tools:ignore="RtlHardcoded">
+
+        <LinearLayout
+            style="@style/track_cell_action"
+            android:background="?colorTrackCellActionRingtoneBg">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_set_ringtone"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                style="@style/track_cell_action_text"
+                android:text="@string/track_action__set_as_ringtone" />
+        </LinearLayout>
+    </libs.MaterialRippleLayout>
+
+    <libs.MaterialRippleLayout
+        style="@style/track_ripple"
+        android:id="@+id/actionShare"
+        tools:ignore="RtlHardcoded">
+
+        <LinearLayout
+            style="@style/track_cell_action"
+            android:background="?colorTrackCellActionDownloadBg">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_share"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                style="@style/track_cell_action_text"
+                android:text="@string/track_action__share" />
+        </LinearLayout>
+    </libs.MaterialRippleLayout>
+
+</LinearLayout>
+
+    

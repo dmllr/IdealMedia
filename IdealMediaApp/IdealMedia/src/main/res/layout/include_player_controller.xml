@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/player_controller"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:clickable="true"
+    android:orientation="vertical">
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/pixel"
+        />
+
+    <com.armedarms.idealmedia.tools.MusicPlayerView
+        android:id="@+id/mpv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="38dp"
+        android:layout_marginRight="38dp"
+        android:layout_marginTop="64dp"
+        app:textSize = "14sp"
+        app:textColor = "#80FFFFFF"
+        app:buttonColor = "?colorPositive"
+        app:progressLoadedColor = "?colorMenuText"
+        app:progressEmptyColor = "?colorTrackCellTime"
+        app:cover = "@drawable/ic_default_album" />
+
+    <LinearLayout
+        android:id="@+id/layoutControls"
+        android:layout_width="140dp"
+        android:layout_height="44dp"
+        android:layout_margin="12dp"
+        android:layout_alignParentRight="true"
+        tools:ignore="RtlHardcoded">
+        <ImageButton style="@style/player_controller_button"
+            android:id="@+id/btnRew"
+            android:src="@drawable/selector_skipprev_button"
+            android:enabled="false"
+            tools:ignore="ContentDescription" />
+        <ImageButton style="@style/player_controller_button"
+            android:id="@+id/btnPlay"
+            android:src="@drawable/selector_play_button"
+            android:enabled="true"
+            tools:ignore="ContentDescription" />
+        <ImageButton style="@style/player_controller_button"
+            android:id="@+id/btnFf"
+            android:src="@drawable/selector_forward_button"
+            android:enabled="false"
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutTexsts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/layoutControls"
+        android:layout_margin="12dp"
+        android:orientation="vertical"
+        tools:ignore="RtlHardcoded">
+
+        <TextView
+            android:id="@+id/player_controller_track_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:lines="1"
+            android:maxLines="1"
+            android:textColor="?colorTrackCellTitle"
+            tools:ignore="HardcodedText" />
+        <TextView
+            android:id="@+id/player_controller_track_artist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="?colorTrackCellArtist"
+            android:lines="1"
+            android:maxLines="1"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+    </LinearLayout>
+
+    <ImageButton style="@style/player_controller_button"
+        android:layout_width="wrap_content"
+        android:id="@+id/btnSfl"
+        android:src="@drawable/base_shuffle_button_off"
+        android:enabled="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="64dp"
+        tools:ignore="ContentDescription,RtlHardcoded" />
+    <ImageButton style="@style/player_controller_button"
+        android:layout_width="wrap_content"
+        android:id="@+id/btnRept1"
+        android:src="@drawable/base_repeat_off"
+        android:checked="false"
+        android:enabled="true"
+        android:visibility="visible"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="64dp"
+        tools:ignore="ContentDescription,RtlHardcoded" />
+
+</RelativeLayout>

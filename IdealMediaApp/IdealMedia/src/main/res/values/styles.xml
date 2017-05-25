@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="default_ripple">
+        <item name="rippleColor">#ffffff</item>
+        <item name="rippleAlpha">0.5</item>
+        <item name="rippleDimension">0dp</item>
+        <item name="rippleDelayClick">true</item>
+    </style>
+
+    <style name="menu_ripple" parent="default_ripple">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="track_ripple" parent="default_ripple">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="click_ripple">
+        <item name="rippleColor">#ffffff</item>
+        <item name="rippleAlpha">0.5</item>
+        <item name="rippleDimension">0dp</item>
+        <item name="rippleDelayClick">true</item>
+        <item name="rippleDuration">200</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="menu_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">18dp</item>
+        <item name="android:clickable">true</item>
+    </style>
+    <style name="menu_line_sub">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">32dp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingRight">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="menu_line_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:textSize">@dimen/menu_text_size</item>
+        <item name="android:textColor">?colorMenuText</item>
+    </style>
+
+    <style name="icon_social">
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="preference_header_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:clickable">false</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:textSize">@dimen/preference_text_size</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <style name="preference_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingLeft">28dp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingRight">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:background">?drawablePreferenceLine</item>
+    </style>
+    <style name="preference_line_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/preference_text_size</item>
+        <item name="android:textColor">?colorPreferenceCellText</item>
+    </style>
+    <style name="preference_line_subtext" parent="preference_line_text">
+        <item name="android:textSize">@dimen/preference_text_subsize</item>
+        <item name="android:textColor">?colorPreferenceCellSubtext</item>
+    </style>
+
+    <style name="track_cell_action">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="track_cell_action_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:lines">2</item>
+        <item name="android:maxLines">3</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="player_controller_button">
+        <item name="android:layout_marginLeft">2dp</item>
+        <item name="android:layout_marginRight">2dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:background">#0000</item>
+    </style>
+
+</resources>

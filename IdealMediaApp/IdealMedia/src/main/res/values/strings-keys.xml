@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string translatable="false" name="navigation_drawer_open">Open navigation drawer</string>
+    <string translatable="false" name="navigation_drawer_close">Close navigation drawer</string>
+    <string translatable="false" name="key_vk">vk</string>
+    <string translatable="false" name="key_tracks">tracks</string>
+    <string translatable="false" name="key_mediapath">mediaPath</string>
+    <string translatable="false" name="key_theme">theme</string>
+    <string translatable="false" name="key_foreign_vk_popular">foreign_vk_popular</string>
+    <string translatable="false" name="key_media_method_full">media_method_full</string>
+    <string translatable="false" name="key_equalizer">equalizer</string>
+    <string translatable="false" name="key_playlists">playlists</string>
+    <string translatable="false" name="key_playing_history">playing_history</string>
+    <string translatable="false" name="key_scroll_in_action">key_scroll_in_action</string>
+    <string translatable="false" name="key_interstitial_date">interstitial_date</string>
+    <string translatable="false" name="support_email">suppot@armedarms.com</string>
+    <string translatable="false" name="snapshot">snapshot</string>
+    <string translatable="false" name="admob_inlist_banner">ca-app-pub-8200664039296844/3909329011</string>
+    <string translatable="false" name="admob_interstitial">ca-app-pub-8200664039296844/4897609417</string>
+    <string translatable="false" name="hasPremium">C8–60–00–A4–B5–04</string>
+
+</resources>

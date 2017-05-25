@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary_text_color__colored_dark">#aaffffff</color>
+    <color name="secondary_text_color__colored_dark">#55ffffff</color>
+
+    <color name="negative__colored_dark">#ff5722</color>
+    <color name="positive__colored_dark">#5677fc</color>
+</resources>

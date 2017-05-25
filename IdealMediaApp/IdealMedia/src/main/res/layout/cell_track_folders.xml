@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/cell_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:lines="1"
+        android:maxLines="1"
+        android:textColor="?colorTrackCellTitle"
+        android:text="Title"
+        tools:ignore="HardcodedText,RtlHardcoded" />
+
+    <TextView
+        android:id="@+id/cell_artist"
+        android:layout_below="@id/cell_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="?colorTrackCellArtist"
+        android:lines="1"
+        android:maxLines="1"
+        android:text="Artist"
+        tools:ignore="HardcodedText,RtlHardcoded" />
+
+</RelativeLayout>

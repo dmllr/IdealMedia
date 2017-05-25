@@ -1,0 +1,220 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="?colorFolders"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/menu_search"
+                android:background="?drawableHeadBackground"
+                android:orientation="vertical"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <include layout="@layout/include_menu_drawer_head" />
+
+                <View
+                    android:focusable="true" android:focusableInTouchMode="true"
+                    android:layout_width="0px" android:layout_height="0px"/>
+                <EditText
+                    android:id="@+id/textSearch"
+                    android:hint="@string/hint_search"
+                    android:textColorHint="#ccc"
+                    android:inputType="textFilter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/viewTint"
+                android:background="?colorMenuTint"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+
+        <libs.MaterialRippleLayout style="@style/menu_ripple">
+            <LinearLayout
+                style="@style/menu_line"
+                android:id="@+id/menu_playlists"
+                android:background="?colorPlaylists" >
+                <ImageView
+                    android:src="@drawable/ic_menu_playlists"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    style="@style/menu_line_text"
+                    android:text="@string/menu_playlists" />
+            </LinearLayout>
+        </libs.MaterialRippleLayout>
+        <libs.MaterialRippleLayout style="@style/menu_ripple">
+            <LinearLayout
+                style="@style/menu_line_sub"
+                android:id="@+id/menu_playlists_all_music"
+                android:background="?drawablePlaylistsSubLine" >
+                <ImageView
+                    android:src="@drawable/ic_menu_playlists"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    style="@style/menu_line_text"
+                    android:text="@string/menu_all_music"/>
+            </LinearLayout>
+        </libs.MaterialRippleLayout>
+        <libs.MaterialRippleLayout style="@style/menu_ripple">
+            <LinearLayout
+                style="@style/menu_line_sub"
+                android:id="@+id/menu_playlists_playing"
+                android:background="?drawablePlaylistsSubLine" >
+                <ImageView
+                    android:src="@drawable/ic_menu_playlist_playing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    style="@style/menu_line_text"
+                    android:text="@string/menu_now_playing"/>
+            </LinearLayout>
+        </libs.MaterialRippleLayout>
+        <libs.MaterialRippleLayout style="@style/menu_ripple">
+            <LinearLayout
+                style="@style/menu_line_sub"
+                android:visibility="gone"
+                android:id="@+id/menu_playlists_playback_history"
+                android:background="?drawablePlaylistsSubLine" >
+                <ImageView
+                    android:src="@drawable/ic_menu_playlists"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    style="@style/menu_line_text"
+                    android:text="@string/playback_history"/>
+            </LinearLayout>
+        </libs.MaterialRippleLayout>
+
+        <libs.MaterialRippleLayout style="@style/menu_ripple">
+            <LinearLayout
+                style="@style/menu_line"
+                android:id="@+id/menu_vk"
+                android:background="?colorVK" >
+                <ImageView
+                    android:src="@drawable/ic_menu_vk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    style="@style/menu_line_text"
+                    android:text="@string/menu_vk"/>
+            </LinearLayout>
+        </libs.MaterialRippleLayout>
+        <libs.MaterialRippleLayout style="@style/menu_ripple">
+            <LinearLayout
+                style="@style/menu_line_sub"
+                android:id="@+id/menu_vk_search"
+                android:background="?drawableVKSubLine"
+                android:visibility="gone" >
+                <ImageView
+                    android:src="@drawable/ic_menu_vk_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/textStoredSearch"
+                    style="@style/menu_line_text" />
+            </LinearLayout>
+        </libs.MaterialRippleLayout>
+        <libs.MaterialRippleLayout style="@style/menu_ripple">
+            <LinearLayout
+                style="@style/menu_line_sub"
+                android:id="@+id/menu_vk_popular"
+                android:background="?drawableVKSubLine" >
+                <ImageView
+                    android:src="@drawable/ic_menu_vk_popular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    style="@style/menu_line_text"
+                    android:text = "@string/menu_vk_popular" />
+            </LinearLayout>
+        </libs.MaterialRippleLayout>
+        <libs.MaterialRippleLayout style="@style/menu_ripple">
+            <LinearLayout
+                style="@style/menu_line_sub"
+                android:id="@+id/menu_vk_recommendations"
+                android:background="?drawableVKSubLine" >
+                <ImageView
+                    android:src="@drawable/ic_menu_vk_popular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    style="@style/menu_line_text"
+                    android:text = "@string/menu_vk_recommendations" />
+            </LinearLayout>
+        </libs.MaterialRippleLayout>
+
+        <libs.MaterialRippleLayout style="@style/menu_ripple">
+            <LinearLayout
+                style="@style/menu_line"
+                android:id="@+id/menu_device"
+                android:background="?colorFolders" >
+                <ImageView
+                    android:src="@drawable/ic_menu_device"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    style="@style/menu_line_text"
+                    android:text="@string/menu_on_device"/>
+            </LinearLayout>
+        </libs.MaterialRippleLayout>
+        <libs.MaterialRippleLayout style="@style/menu_ripple">
+            <LinearLayout
+                style="@style/menu_line_sub"
+                android:id="@+id/menu_device_tracks"
+                android:background="?drawableFoldersSubLine" >
+                <ImageView
+                    android:src="@drawable/ic_menu_device_folders"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    style="@style/menu_line_text"
+                    android:text="@string/menu_folders"/>
+            </LinearLayout>
+        </libs.MaterialRippleLayout>
+        <libs.MaterialRippleLayout style="@style/menu_ripple">
+            <LinearLayout
+                style="@style/menu_line_sub"
+                android:id="@+id/menu_device_artists"
+                android:background="?drawableFoldersSubLine" >
+                <ImageView
+                    android:src="@drawable/ic_menu_device_artists"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    style="@style/menu_line_text"
+                    android:text="@string/menu_artists"/>
+            </LinearLayout>
+        </libs.MaterialRippleLayout>
+        <libs.MaterialRippleLayout style="@style/menu_ripple">
+            <LinearLayout
+                style="@style/menu_line_sub"
+                android:id="@+id/menu_device_albums"
+                android:background="?drawableFoldersSubLine" >
+                <ImageView
+                    android:src="@drawable/ic_menu_device_albums"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    style="@style/menu_line_text"
+                    android:text="@string/menu_albums"/>
+            </LinearLayout>
+        </libs.MaterialRippleLayout>
+
+    </LinearLayout>
+</ScrollView>
