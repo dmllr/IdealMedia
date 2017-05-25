@@ -19,9 +19,9 @@ Playing the folder structure, artist or album or create your own playlists with 
 ☺ Detecting recently added or downloaded tracks
 
 # Screenshots
-![Main screen](./images/01.png =250x)
-![Menu, swipe from left edge](./images/02.png =250x)
-![Settings, swipe from the right edge](./images/03.png =250x)
-![Dark theme](./images/04.png =250x)
-![Black theme](./images/05.png =250x)
-![Equalizer](./images/07.png =250x)
+<img src="https://github.com/dmllr/IdealMedia/raw/master/images/01.png" width="25%">
+<img src="https://github.com/dmllr/IdealMedia/raw/master/images/02.png" width="25%">
+<img src="https://github.com/dmllr/IdealMedia/raw/master/images/03.png" width="25%">
+<img src="https://github.com/dmllr/IdealMedia/raw/master/images/04.png" width="25%">
+<img src="https://github.com/dmllr/IdealMedia/raw/master/images/05.png" width="25%">
+<img src="https://github.com/dmllr/IdealMedia/raw/master/images/07.png" width="25%">
