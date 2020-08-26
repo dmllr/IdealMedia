@@ -25,7 +25,6 @@ public class SettingsDrawerFragment extends Fragment implements View.OnClickList
     private TextView textPurchasePremium;
     private TextView textMediaPath;
     private TextView textMediaMethod;
-    private TextView textForeignVKPopular;
     private View viewMediaPathPref;
 
     public SettingsDrawerFragment() {
@@ -45,32 +44,26 @@ public class SettingsDrawerFragment extends Fragment implements View.OnClickList
         view.setOnClickListener(this);
         view.findViewById(R.id.preference_purchase_premium).setOnClickListener(this);
         view.findViewById(R.id.preference_media_method).setOnClickListener(this);
-        view.findViewById(R.id.preference_foreign_popular).setOnClickListener(this);
-        view.findViewById(R.id.preference_logout_vk).setOnClickListener(this);
         view.findViewById(R.id.preference_equalizer).setOnClickListener(this);
 
         String mediaPath = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(getString(R.string.key_mediapath), "/");
-        textMediaPath = (TextView)view.findViewById(R.id.textMediaPath);
+        textMediaPath = view.findViewById(R.id.textMediaPath);
         textMediaPath.setText(mediaPath);
 
-        boolean isForeignVK = PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean(getString(R.string.key_foreign_vk_popular), false);
-        textForeignVKPopular = (TextView)view.findViewById(R.id.textForeignVKPopular);
-        textForeignVKPopular.setText(isForeignVK ? R.string.yes : R.string.no);
-
         boolean fullScan = PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean(getString(R.string.key_media_method_full), false);
-        textMediaMethod = (TextView)view.findViewById(R.id.textMediaMethod);
+        textMediaMethod = view.findViewById(R.id.textMediaMethod);
         textMediaMethod.setText(fullScan ? R.string.settings_media_method_full : R.string.settings_media_method_quick);
         viewMediaPathPref.setVisibility(fullScan ? View.VISIBLE : View.GONE);
 
-        textPurchasePremium = (TextView)view.findViewById(R.id.textPurchasePremium);
+        textPurchasePremium = view.findViewById(R.id.textPurchasePremium);
 
         int themeIndex = PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt(getString(R.string.key_theme), 0);
-        final Spinner spinnerThemes = (Spinner)view.findViewById(R.id.theme_list);
+        final Spinner spinnerThemes = view.findViewById(R.id.theme_list);
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(getActivity(), android.R.layout.simple_spinner_item, getResources().getTextArray(R.array.themes_array)) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
-                TextView text = (TextView)view.findViewById(android.R.id.text1);
+                TextView text = view.findViewById(android.R.id.text1);
                 text.setTextSize(getResources().getDimension(R.dimen.preference_text_size) / getResources().getDisplayMetrics().density);
                 text.setTextColor(ResUtils.color(getActivity(), R.attr.colorPreferenceCellSubtext));
                 return view;
@@ -84,7 +77,7 @@ public class SettingsDrawerFragment extends Fragment implements View.OnClickList
                     view.setBackgroundResource(resId);
                 else
                     view.setBackgroundColor(ResUtils.color(getActivity(), R.attr.colorPreferences));
-                TextView text = (TextView)view.findViewById(android.R.id.text1);
+                TextView text = view.findViewById(android.R.id.text1);
                 text.setTextSize(getResources().getDimension(R.dimen.preference_text_size) / getResources().getDisplayMetrics().density);
                 text.setTextColor(ResUtils.color(getActivity(), R.attr.colorPreferenceCellText));
                 return view;

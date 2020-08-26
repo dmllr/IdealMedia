@@ -32,7 +32,6 @@ public class SearchResultsFragment extends PagingPlayingFragment implements IHas
     private String searchQuery;
 
     private Playlist playlistResultsLocal;
-    private Playlist playlistResultsVK;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,9 +39,6 @@ public class SearchResultsFragment extends PagingPlayingFragment implements IHas
 
         playlistResultsLocal = new Playlist();
         playlistResultsLocal.setTitle(getString(R.string.menu_on_device));
-
-        playlistResultsVK = new Playlist();
-        playlistResultsVK.setTitle(getString(R.string.menu_vk));
     }
 
     @Override
@@ -54,9 +50,9 @@ public class SearchResultsFragment extends PagingPlayingFragment implements IHas
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        adapter = new PlayerAdapter(activity, this, playlistResultsLocal, playlistResultsVK);
+        adapter = new PlayerAdapter(activity, this, playlistResultsLocal);
 
-        listView = (RecyclerView) view.findViewById(android.R.id.list);
+        listView = view.findViewById(android.R.id.list);
         listView.setLayoutManager(new LinearLayoutManager(getActivity()));
         listView.setItemAnimator(new DefaultItemAnimator());
         listView.setAdapter(adapter);
@@ -74,7 +70,6 @@ public class SearchResultsFragment extends PagingPlayingFragment implements IHas
             activity.setRefreshing(true);
 
         playlistResultsLocal.getTracks().clear();
-        playlistResultsVK.getTracks().clear();
         updateTracks();
 
         //noinspection unchecked
@@ -124,7 +119,7 @@ public class SearchResultsFragment extends PagingPlayingFragment implements IHas
 
     private void updateTracks() {
         updateSnapshot();
-        setTracks(playlistResultsLocal, playlistResultsVK);
+        setTracks(playlistResultsLocal);
         adapter.notifyDataSetChanged();
     }
 

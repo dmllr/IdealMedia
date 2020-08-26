@@ -99,31 +99,5 @@
                 android:layout_height="48dp"
                 android:layout_marginLeft="-9dp"/>
         </LinearLayout>
-
-        <TextView
-            style="@style/preference_header_line"
-            android:text="@string/settings_head_personal" />
-        <libs.MaterialRippleLayout style="@style/menu_ripple">
-            <LinearLayout
-                style="@style/preference_line"
-                android:id="@+id/preference_foreign_popular" >
-                <TextView
-                    style="@style/preference_line_text"
-                    android:text="@string/settings_foreign_popular"/>
-                <TextView
-                    style="@style/preference_line_subtext"
-                    android:id="@+id/textForeignVKPopular"
-                    android:text="@string/no"/>
-            </LinearLayout>
-        </libs.MaterialRippleLayout>
-        <libs.MaterialRippleLayout style="@style/menu_ripple">
-            <LinearLayout
-                style="@style/preference_line"
-                android:id="@+id/preference_logout_vk" >
-                <TextView
-                    style="@style/preference_line_text"
-                    android:text="@string/settings_logout_vk"/>
-            </LinearLayout>
-        </libs.MaterialRippleLayout>
     </LinearLayout>
 </ScrollView>

@@ -198,7 +198,7 @@ public class NavigationActivity
                 update();
             }
         });
-        swipeRefreshLayout.setColorSchemeColors(ResUtils.color(this, R.attr.colorPlaylists), ResUtils.color(this, R.attr.colorVK), ResUtils.color(this, R.attr.colorFolders), ResUtils.color(this, R.attr.colorPreferences));
+        swipeRefreshLayout.setColorSchemeColors(ResUtils.color(this, R.attr.colorPlaylists), ResUtils.color(this, R.attr.colorFolders), ResUtils.color(this, R.attr.colorPreferences));
 
         musicPlayerView = findViewById(R.id.mpv);
         musicPlayerView.setAutoProgress(false);
@@ -386,16 +386,6 @@ public class NavigationActivity
         putFragment(fragment);
 
         mNavigationDrawerFragment.closeDrawer();
-    }
-
-    public void searchDone(boolean result, String query) {
-        if (result) {
-            mNavigationDrawerFragment.storeSearchQuery(query);
-        } else {
-
-        }
-
-        restoreActionBar();
     }
 
     private void setTheme() {
