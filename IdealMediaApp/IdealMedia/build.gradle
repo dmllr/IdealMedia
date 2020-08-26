@@ -13,19 +13,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    flavorDimensions 'version'
-    productFlavors {
-        adsupported {
-            applicationId "com.armedarms.idealmedia"
-            dimension 'version'
-            versionName "1.4.1-free"
-        }
-        premium {
-            applicationId "com.armedarms.idealmedia.premium"
-            dimension 'version'
-            versionName "1.4.1-premium"
-        }
-    }
 }
 
 repositories {

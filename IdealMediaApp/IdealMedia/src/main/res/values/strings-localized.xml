@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Ideal media</string>
+    <string name="title_ideal">Ideal media</string>
+
+    <string name="like_url">https://play.google.com/store/apps/details?id=com.armedarms.idealmedia.premium</string>
+
     <string name="scan_filesystem_title">Scan for media</string>
     <string name="scan_filesystem_question">I can search the device for all supported audio files.\nThis should take no more than a few minutes.</string>
     <string name="shuffle_is">Shuffle is:</string>
