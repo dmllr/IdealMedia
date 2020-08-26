@@ -1,7 +1,6 @@
 package com.armedarms.idealmedia.dialogs;
 
 import android.app.Dialog;
-import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Environment;
@@ -10,7 +9,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.fragment.app.FragmentManager;
 
 import com.armedarms.idealmedia.R;
 import com.armedarms.idealmedia.utils.ResUtils;

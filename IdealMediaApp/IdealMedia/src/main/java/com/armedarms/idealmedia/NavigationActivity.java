@@ -13,17 +13,17 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.format.Time;
 import android.view.Menu;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidquery.AQuery;
 import com.armedarms.idealmedia.adapters.PlayerAdapter;
@@ -44,10 +44,8 @@ import com.armedarms.idealmedia.fragments.PlaylistFragment;
 import com.armedarms.idealmedia.fragments.PlaylistsFragment;
 import com.armedarms.idealmedia.fragments.SearchResultsFragment;
 import com.armedarms.idealmedia.fragments.SettingsDrawerFragment;
-import com.armedarms.idealmedia.fragments.VKAudioFragment;
 import com.armedarms.idealmedia.tasks.TaskGetArtwork;
 import com.armedarms.idealmedia.tasks.TaskGetPlaylistFilesystem;
-import com.armedarms.idealmedia.tasks.TaskGetPlaylistVK;
 import com.armedarms.idealmedia.tools.SwipeRefreshLayout;
 import com.armedarms.idealmedia.utils.FileUtils;
 import com.armedarms.idealmedia.utils.MediaUtils;
@@ -56,26 +54,13 @@ import com.armedarms.idealmedia.utils.iab.IabHelper;
 import com.armedarms.idealmedia.utils.iab.IabResult;
 import com.armedarms.idealmedia.utils.iab.Inventory;
 import com.armedarms.idealmedia.utils.iab.Purchase;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.analytics.GoogleAnalytics;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
 import com.r0adkll.postoffice.PostOffice;
 import com.r0adkll.postoffice.model.Design;
 import com.r0adkll.postoffice.styles.ListStyle;
-import com.vk.sdk.VKAccessToken;
-import com.vk.sdk.VKScope;
-import com.vk.sdk.VKSdk;
-import com.vk.sdk.VKSdkListener;
-import com.vk.sdk.VKUIHelper;
-import com.vk.sdk.api.VKError;
-import com.vk.sdk.dialogs.VKCaptchaDialog;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Random;
 import java.util.Stack;
 import java.util.UUID;
@@ -83,13 +68,13 @@ import java.util.UUID;
 import com.armedarms.idealmedia.tools.MusicPlayerView;
 
 import libs.SlidingUpPanelLayout;
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
+import static com.armedarms.idealmedia.R.id.*;
 
 
 public class NavigationActivity
         extends
-            ActionBarActivity
+            androidx.fragment.app.FragmentActivity
         implements
             NavigationDrawerFragment.NavigationDrawerCallbacks,
             SettingsDrawerFragment.OnSettingsInteractionListener,
@@ -105,7 +90,6 @@ public class NavigationActivity
     private FoldersFragment fragmentFolders = new FoldersFragment();
     private AlbumsFragment fragmentAlbums = new AlbumsFragment();
     private ArtistsFragment fragmentArtists = new ArtistsFragment();
-    private VKAudioFragment fragmentVKAudio = new VKAudioFragment();
     private SearchResultsFragment fragmentSearchResults = new SearchResultsFragment();
     private BasePlayingFragment playingFragment;
     private Stack<FragmentHistoryItem> fragmentHistory = new Stack<FragmentHistoryItem>();
@@ -117,15 +101,12 @@ public class NavigationActivity
     private Playlist workingPlaylist;
     private Playlist historyPlaylist;
 
-    private SlidingUpPanelLayout slideUpPanel;
     private SwipeRefreshLayout swipeRefreshLayout;
     private MusicPlayerView musicPlayerView;
     private TextView textPlayerControllerTrackTitle;
     private TextView textPlayerControllerTrackArtist;
     private View layoutControls;
     private View layoutTexts;
-
-    private InterstitialAd interstitial;
 
     private IabHelper iabHelper;
     private Inventory iabInventory;
@@ -166,8 +147,6 @@ public class NavigationActivity
 
         if (getService() != null)
             getService().setActivityStarted(true);
-
-        VKUIHelper.onResume(this);
     }
 
     @Override
@@ -183,13 +162,7 @@ public class NavigationActivity
         super.onStart();
 
         MediaUtils.nomedia();
-        requestInterstitial();
         attemptLikeDialog();
-    }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     @Override
@@ -197,12 +170,6 @@ public class NavigationActivity
         setTheme();
 
         super.onCreate(savedInstanceState);
-
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                        .setDefaultFontPath("fonts/RobotoCondensed-Light.ttf")
-                        .setFontAttrId(R.attr.fontPath)
-                        .build()
-        );
 
         setContentView(R.layout.activity_navigation);
 
@@ -213,16 +180,16 @@ public class NavigationActivity
 
         aq = new AQuery(this);
 
-        mNavigationDrawerFragment = (NavigationDrawerFragment)getSupportFragmentManager().findFragmentById(R.id.left_navigation_drawer);
-        mSettingsDrawerFragment = (SettingsDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.right_navigation_drawer);
+        mNavigationDrawerFragment = (NavigationDrawerFragment)getSupportFragmentManager().findFragmentById(left_navigation_drawer);
+        mSettingsDrawerFragment = (SettingsDrawerFragment) getSupportFragmentManager().findFragmentById(right_navigation_drawer);
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
-                R.id.left_navigation_drawer,
-                (DrawerLayout) findViewById(R.id.drawer_layout));
+                left_navigation_drawer,
+                (DrawerLayout) findViewById(drawer_layout));
 
         // Set up swipe-to-refresh.
-        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipeRefresh);
+        swipeRefreshLayout = findViewById(swipeRefresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -231,7 +198,7 @@ public class NavigationActivity
         });
         swipeRefreshLayout.setColorSchemeColors(ResUtils.color(this, R.attr.colorPlaylists), ResUtils.color(this, R.attr.colorVK), ResUtils.color(this, R.attr.colorFolders), ResUtils.color(this, R.attr.colorPreferences));
 
-        musicPlayerView = (MusicPlayerView)findViewById(R.id.mpv);
+        musicPlayerView = findViewById(R.id.mpv);
         musicPlayerView.setAutoProgress(false);
         musicPlayerView.setInteractionListener(new MusicPlayerView.OnInteractionListener() {
             @Override
@@ -242,11 +209,11 @@ public class NavigationActivity
 
         layoutControls = findViewById(R.id.layoutControls);
         layoutTexts = findViewById(R.id.layoutTexsts);
-        slideUpPanel = (SlidingUpPanelLayout)findViewById(R.id.sliding_layout);
-        slideUpPanel.setPanelSlideListener(new SlidePanelSlideListener(this));
+        SlidingUpPanelLayout slideUpPanel = findViewById(R.id.sliding_layout);
+        slideUpPanel.addPanelSlideListener(new SlidePanelSlideListener(this));
 
-        textPlayerControllerTrackTitle = (TextView)findViewById(R.id.player_controller_track_title);
-        textPlayerControllerTrackArtist = (TextView)findViewById(R.id.player_controller_track_artist);
+        textPlayerControllerTrackTitle = findViewById(R.id.player_controller_track_title);
+        textPlayerControllerTrackArtist = findViewById(R.id.player_controller_track_artist);
 
         if (!Settings.PREMIUM)
             iabStartSetup();
@@ -254,8 +221,6 @@ public class NavigationActivity
         loadPlaylistsAsync();
 
         bindService(new Intent(this, PlayerService.class), mConnection, Context.BIND_AUTO_CREATE);
-
-        VKSdk.initialize(vksdkListener, Settings.VK_APP_ID);
     }
 
     @Override
@@ -264,22 +229,16 @@ public class NavigationActivity
         unbindService(mConnection);
 
         super.onDestroy();
-
-        VKUIHelper.onDestroy(this);
     }
 
     @Override
     public void onBackPressed() {
-        attemptInterstitial();
-
         if (fragmentHistory.size() > 1) {
             fragmentHistory.pop();
             FragmentHistoryItem fhi = fragmentHistory.peek();
             putFragment(fhi.fragment, false);
-            if (fhi.fragment instanceof VKAudioFragment)
-                ((VKAudioFragment) fhi.fragment).setMethod(fhi.method, fhi.param);
 
-            getSupportActionBar().setTitle(getFragmentTitle(fhi.fragment));
+            getActionBar().setTitle(getFragmentTitle(fhi.fragment));
         } else
             super.onBackPressed();
     }
@@ -374,8 +333,6 @@ public class NavigationActivity
             fragmentArtists.update(true);
         else if (fragment == fragmentAlbums)
             fragmentAlbums.update(true);
-        else if (fragment == fragmentVKAudio)
-            fragmentVKAudio.update(true);
         else if (fragment == fragmentSearchResults)
             fragmentSearchResults.update();
         else
@@ -406,26 +363,9 @@ public class NavigationActivity
                 fragment = fragmentPlaylist;
                 fragmentPlaylist.setPlaylist(historyPlaylist);
                 break;
-            case VK:
-                fragmentVKAudio.setMethod(TaskGetPlaylistVK.VK_METHOD_GET);
-                fragment = fragmentVKAudio;
-                break;
-            case VK_POPULAR:
-                fragmentVKAudio.setMethod(TaskGetPlaylistVK.VK_METHOD_GET_POPULAR);
-                fragment = fragmentVKAudio;
-                break;
-            case VK_RECOMMENDATIONS:
-                fragmentVKAudio.setMethod(TaskGetPlaylistVK.VK_METHOD_GET_RECOMMENDATIONS);
-                fragment = fragmentVKAudio;
-                break;
             case SEARCH:
-                if (Settings.PREMIUM || hasPremiumPurchase()) {
-                    fragmentSearchResults.setQuery(param);
-                    fragment = fragmentSearchResults;
-                } else {
-                    fragmentVKAudio.setMethod(TaskGetPlaylistVK.VK_METHOD_SEARCH, param);
-                    fragment = fragmentVKAudio;
-                }
+                fragmentSearchResults.setQuery(param);
+                fragment = fragmentSearchResults;
                 break;
             case DEVICE:
                 fragment = fragmentFolders;
@@ -473,49 +413,14 @@ public class NavigationActivity
         }
 
         setTheme(theme);
-
-        getTracker(NavigationActivity.TrackerName.APP_TRACKER)
-                .send(new HitBuilders.EventBuilder().setCategory("UX").setAction("theme").setLabel("index " + themeIndex).build());
-    }
-
-    private void requestInterstitial() {
-        if (Settings.PREMIUM || hasPremiumPurchase())
-            return;
-
-        if (!Settings.INTERSTITIAL_ENABLED)
-            return;
-
-        Date lastInterstitialDate = new Date(PreferenceManager.getDefaultSharedPreferences(this).getLong(getString(R.string.key_interstitial_date), 0));
-        if (lastInterstitialDate.getTime() + 1000 * 60 * 60 * 24 * 7 < new Date().getTime()) {
-            interstitial = new InterstitialAd(this);
-            interstitial.setAdUnitId(getString(R.string.admob_interstitial));
-            AdRequest adRequest = new AdRequest.Builder().build();
-            interstitial.loadAd(adRequest);
-        }
-    }
-
-    public void attemptInterstitial() {
-        if (Settings.PREMIUM || hasPremiumPurchase())
-            return;
-
-        if (!Settings.INTERSTITIAL_ENABLED)
-            return;
-
-        if (interstitial != null && interstitial.isLoaded()) {
-            interstitial.show();
-
-            Toast.makeText(this, getString(R.string.toast_interstitial), Toast.LENGTH_LONG).show();
-
-            PreferenceManager.getDefaultSharedPreferences(this).edit().putLong(getString(R.string.key_interstitial_date), new Date().getTime()).commit();
-        }
     }
 
     private void colorize(final int color) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if (getSupportActionBar() != null)
-                    getSupportActionBar().setBackgroundDrawable(new ColorDrawable(color));
+                if (getActionBar() != null)
+                    getActionBar().setBackgroundDrawable(new ColorDrawable(color));
 
                 View view = findViewById(R.id.drawer_layout);
                 if (view != null)
@@ -534,7 +439,6 @@ public class NavigationActivity
 
         if (!iabHelper.handleActivityResult(requestCode, resultCode, data)) {
             super.onActivityResult(requestCode, resultCode, data);
-            VKUIHelper.onActivityResult(this, requestCode, resultCode, data);
         }
     }
 
@@ -581,9 +485,6 @@ public class NavigationActivity
                             updatePlayPause();
                         }
                     }).start();
-
-                    getTracker(NavigationActivity.TrackerName.APP_TRACKER)
-                        .send(new HitBuilders.EventBuilder().setCategory("UX").setAction("skipnext").build());
                 }
             }
         });
@@ -598,9 +499,6 @@ public class NavigationActivity
                             updatePlayPause();
                         }
                     }).start();
-
-                    getTracker(NavigationActivity.TrackerName.APP_TRACKER)
-                            .send(new HitBuilders.EventBuilder().setCategory("UX").setAction("skipprev").build());
                 }
             }
         });
@@ -639,9 +537,6 @@ public class NavigationActivity
                         public void run() {
                             mBoundService.setRepeat(!mBoundService.isRepeat());
                             updatePlayPause();
-
-                            Tracker t = getTracker(NavigationActivity.TrackerName.APP_TRACKER);
-                            t.send(new HitBuilders.EventBuilder().setCategory("UX").setAction("repeat").setLabel(String.valueOf(mBoundService.isRepeat())).build());
                         }
                     }).start();
                 }
@@ -668,9 +563,6 @@ public class NavigationActivity
                                         if (playingFragment.getAdapter().getItemCount() > pos) {
                                             mBoundService.play(pos);
                                             mBoundService.startVolumeUpFlag = System.currentTimeMillis();
-
-                                            Tracker t = getTracker(NavigationActivity.TrackerName.APP_TRACKER);
-                                            t.send(new HitBuilders.EventBuilder().setCategory("Track").setAction("play").build());
                                         }
                                     }
                                 }
@@ -678,9 +570,6 @@ public class NavigationActivity
                             updatePlayPause();
                         }
                     }).start();
-
-                    Tracker t = getTracker(NavigationActivity.TrackerName.APP_TRACKER);
-                    t.send(new HitBuilders.EventBuilder().setCategory("UX").setAction("play/pause").build());
                 }
 
             }
@@ -741,8 +630,8 @@ public class NavigationActivity
 
     public void restoreActionBar() {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);
-        getSupportActionBar().setDisplayShowTitleEnabled(true);
-        getSupportActionBar().setTitle(getFragmentTitle(fragment));
+        getActionBar().setDisplayShowTitleEnabled(true);
+        getActionBar().setTitle(getFragmentTitle(fragment));
     }
 
     @Override
@@ -873,7 +762,7 @@ public class NavigationActivity
                                     @Override
                                     public void run() {
                                         boolean isIndeterminate = progress == 0;
-                                        viewHolder.index.setText(String.valueOf((int)(100 * progress / duration)) + "%");
+                                        viewHolder.index.setText((int) (100 * progress / duration) + "%");
                                         viewHolder.index.setProgress(isIndeterminate ? 1 : (int)(100 * progress / duration));
                                         viewHolder.index.setIndeterminateProgressMode(isIndeterminate);
                                     }
@@ -897,9 +786,6 @@ public class NavigationActivity
         if (playingFragment != null)
             playingFragment.shuffleItems();
         updatePlayPause();
-
-        Tracker t = getTracker(NavigationActivity.TrackerName.APP_TRACKER);
-        t.send(new HitBuilders.EventBuilder().setCategory("UX").setAction("shuffle").setLabel(String.valueOf(mode)).build());
     }
 
     private void putFragment(Fragment fragment) {
@@ -953,19 +839,6 @@ public class NavigationActivity
                 resid = R.string.title_playlists;
             else if (fragment == fragmentPlaylist)
                 text = fragmentPlaylist.getPlaylist().getTitle();
-            else if (fragment == fragmentVKAudio) {
-                if (fragmentVKAudio.getMethod().equals(TaskGetPlaylistVK.VK_METHOD_GET))
-                    resid = R.string.title_vk;
-                else if (fragmentVKAudio.getMethod().equals(TaskGetPlaylistVK.VK_METHOD_GET_POPULAR))
-                    resid = R.string.title_vk_popular;
-                else if (fragmentVKAudio.getMethod().equals(TaskGetPlaylistVK.VK_METHOD_GET_RECOMMENDATIONS))
-                    resid = R.string.title_vk_recommendations;
-                else if (fragmentVKAudio.getMethod().equals(TaskGetPlaylistVK.VK_METHOD_SEARCH)) {
-                    if (!"".equals(fragmentVKAudio.getSearchQuery()))
-                        text = "\"" + fragmentVKAudio.getSearchQuery() + "\"";
-                    resid = R.string.title_vk_search;
-                }
-            }
             else if (fragment == fragmentSearchResults) {
                 if (!"".equals(fragmentSearchResults.getSearchQuery()))
                     text = "\"" + fragmentSearchResults.getSearchQuery() + "\"";
@@ -1051,40 +924,6 @@ public class NavigationActivity
     }
 
 
-    public static final String[] vkScope = new String[] {
-            VKScope.AUDIO,
-            VKScope.VIDEO,
-            VKScope.WALL,
-            VKScope.NOHTTPS
-    };
-
-    private final VKSdkListener vksdkListener = new VKSdkListener() {
-        @Override
-        public void onCaptchaError(VKError captchaError) {
-            new VKCaptchaDialog(captchaError).show();
-        }
-
-        @Override
-        public void onTokenExpired(VKAccessToken expiredToken) {
-            VKSdk.authorize(vkScope);
-        }
-
-        @Override
-        public void onAccessDenied(VKError authorizationError) {
-            NavigationActivity.this.onBackPressed();
-        }
-
-        @Override
-        public void onReceiveNewToken(VKAccessToken newToken) {
-            putFragment(playingFragment);
-        }
-
-        @Override
-        public void onAcceptUserToken(VKAccessToken token) {
-            putFragment(playingFragment);
-        }
-    };
-
     @Override
     public void onMediaPathChanged(String mediaPath) {
         boolean fullScan = PreferenceManager.getDefaultSharedPreferences(this).getBoolean(getString(R.string.key_media_method_full), false);
@@ -1094,20 +933,6 @@ public class NavigationActivity
                 updateFolders(false);
             }
         }).execute();
-
-        getTracker(NavigationActivity.TrackerName.APP_TRACKER)
-                .send(new HitBuilders.EventBuilder().setCategory("UX").setAction("settings").setLabel("mediaPathChanged").build());
-    }
-
-    @Override
-    public void onVKSettingsChanged(boolean isForeignPopular) {
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);
-
-        if (fragment == fragmentVKAudio && fragmentVKAudio.getMethod().equals(TaskGetPlaylistVK.VK_METHOD_GET_POPULAR))
-            fragmentVKAudio.update(true);
-
-        getTracker(NavigationActivity.TrackerName.APP_TRACKER)
-                .send(new HitBuilders.EventBuilder().setCategory("UX").setAction("settings").setLabel("vkSettingsChanged").build());
     }
 
     @Override
@@ -1116,23 +941,9 @@ public class NavigationActivity
     }
 
     @Override
-    public void onVkLogout() {
-        VKSdk.logout();
-        Toast.makeText(this, android.R.string.ok, Toast.LENGTH_SHORT).show();
-
-        putPlayerFragment();
-
-        getTracker(NavigationActivity.TrackerName.APP_TRACKER)
-                .send(new HitBuilders.EventBuilder().setCategory("UX").setAction("settings").setLabel("vk logout").build());
-    }
-
-    @Override
     public void onEqualizerPreference() {
         putFragment(new EqualizerFragment());
         mNavigationDrawerFragment.closeDrawer();
-
-        getTracker(NavigationActivity.TrackerName.APP_TRACKER)
-                .send(new HitBuilders.EventBuilder().setCategory("UX").setAction("settings").setLabel("equalizer").build());
     }
 
     @Override
@@ -1201,7 +1012,7 @@ public class NavigationActivity
         return iabAvailable() && iabInventory.hasPurchase(Settings.SKU_PREMIUM); // || PreferenceManager.getDefaultSharedPreferences(this).getBoolean(getString(R.string.hasPremium), false);
     }
 
-    public static interface OnWorkingPlaylistSetListener {
+    public interface OnWorkingPlaylistSetListener {
         void OnWorkingPlaylistSet();
     }
 
@@ -1281,19 +1092,6 @@ public class NavigationActivity
         APP_TRACKER,
     }
 
-    HashMap<TrackerName, Tracker> mTrackers = new HashMap<TrackerName, Tracker>();
-
-    public synchronized Tracker getTracker(TrackerName trackerId) {
-        if (!mTrackers.containsKey(trackerId)) {
-
-            GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
-            Tracker t = analytics.newTracker(R.xml.global_tracker);
-            mTrackers.put(trackerId, t);
-
-        }
-        return mTrackers.get(trackerId);
-    }
-
     private class SlidePanelSlideListener implements com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelSlideListener {
 
         private float density;
@@ -1347,22 +1145,7 @@ public class NavigationActivity
         }
 
         @Override
-        public void onPanelCollapsed(View view) {
-
-        }
-
-        @Override
-        public void onPanelExpanded(View view) {
-
-        }
-
-        @Override
-        public void onPanelAnchored(View view) {
-            isStartFrame = true;
-        }
-
-        @Override
-        public void onPanelHidden(View view) {
+        public void onPanelStateChanged(View panel, com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelState previousState, com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelState newState) {
 
         }
     }

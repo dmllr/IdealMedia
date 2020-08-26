@@ -1,16 +1,14 @@
 package com.armedarms.idealmedia.fragments;
 
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.armedarms.idealmedia.NavigationActivity;
 import com.armedarms.idealmedia.R;
 import com.armedarms.idealmedia.adapters.PlayerAdapter;
 import com.armedarms.idealmedia.domain.Playlist;
 import com.armedarms.idealmedia.domain.Track;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -243,9 +241,6 @@ public class BasePlayingFragment extends BaseFragment {
                 activity.getService().play(selectedPosition);
 
                 activity.updatePlayPause();
-
-                Tracker t = activity.getTracker(NavigationActivity.TrackerName.APP_TRACKER);
-                t.send(new HitBuilders.EventBuilder().setCategory("Track").setAction("play").build());
             }
         }).start();
     }

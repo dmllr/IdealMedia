@@ -3,8 +3,6 @@ package com.armedarms.idealmedia.fragments;
 import android.app.Activity;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +10,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.armedarms.idealmedia.NavigationActivity;
 import com.armedarms.idealmedia.R;
@@ -155,12 +156,6 @@ public class SettingsDrawerFragment extends Fragment implements View.OnClickList
         if (id == R.id.preference_equalizer) {
             equalizer();
         }
-        if (id == R.id.preference_foreign_popular) {
-            toggleForeignPopular();
-        }
-        if (id == R.id.preference_logout_vk) {
-            logoutVK();
-        }
         if (id == R.id.preference_purchase_premium) {
             purchasePremium();
         }
@@ -185,21 +180,6 @@ public class SettingsDrawerFragment extends Fragment implements View.OnClickList
 
     private void equalizer() {
         mListener.onEqualizerPreference();
-    }
-
-    private void logoutVK() {
-        if (mListener != null)
-            mListener.onVkLogout();
-    }
-
-    private void toggleForeignPopular() {
-        boolean isForeignVK = PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean(getString(R.string.key_foreign_vk_popular), false);
-        isForeignVK = !isForeignVK;
-        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putBoolean(getString(R.string.key_foreign_vk_popular), isForeignVK).commit();
-        textForeignVKPopular.setText(isForeignVK ? R.string.yes : R.string.no);
-
-        if (mListener != null)
-            mListener.onVKSettingsChanged(isForeignVK);
     }
 
     private void selectMediaPath() {
@@ -229,9 +209,7 @@ public class SettingsDrawerFragment extends Fragment implements View.OnClickList
 
     public interface OnSettingsInteractionListener {
         void onMediaPathChanged(String mediaPath);
-        void onVKSettingsChanged(boolean isForeignPopular);
         void onMediaMethodChanged(boolean isFullScan);
-        void onVkLogout();
         void onEqualizerPreference();
         void switchTheme(int themeIndex);
         void purchasePremium();

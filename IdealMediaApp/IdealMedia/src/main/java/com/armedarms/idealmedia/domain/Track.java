@@ -5,7 +5,6 @@ import android.text.TextUtils;
 
 import com.un4seen.bass.BASS;
 import com.un4seen.bass.TAGS;
-import com.vk.sdk.api.model.VKApiAudio;
 
 import org.mozilla.universalchardet.UniversalDetector;
 
@@ -176,23 +175,6 @@ public class Track implements Serializable {
 
     public void setAlbumId(int albumId) {
         this.albumId = albumId;
-    }
-
-    public static Track fromVKApiAudio(VKApiAudio audio) {
-        Track t = new Track();
-
-        t.id = audio.id;
-
-        t.artist = audio.artist;
-        t.title = audio.title;
-        t.duration = audio.duration;
-        t.path = "";
-        t.folder = "";
-        t.group = "";
-        t.albumId = audio.album_id;
-        t.url = audio.url;
-
-        return t;
     }
 
     public static Track fromUri(Uri data) {

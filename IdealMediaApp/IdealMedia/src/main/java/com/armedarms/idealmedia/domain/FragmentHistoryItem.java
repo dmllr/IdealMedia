@@ -1,8 +1,6 @@
 package com.armedarms.idealmedia.domain;
 
-import android.support.v4.app.Fragment;
-
-import com.armedarms.idealmedia.fragments.VKAudioFragment;
+import androidx.fragment.app.Fragment;
 
 public class FragmentHistoryItem {
     public Fragment fragment;
@@ -15,10 +13,6 @@ public class FragmentHistoryItem {
         fhi.fragment = fragment;
         fhi.method = "";
         fhi.param = "";
-        if (fragment instanceof VKAudioFragment) {
-            fhi.method = ((VKAudioFragment) fragment).getMethod();
-            fhi.param = ((VKAudioFragment) fragment).getSearchQuery();
-        }
 
         return fhi;
     }

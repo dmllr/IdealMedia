@@ -2,10 +2,10 @@
 <resources>
 
     <style name="default_ripple">
-        <item name="rippleColor">#ffffff</item>
-        <item name="rippleAlpha">0.5</item>
-        <item name="rippleDimension">0dp</item>
-        <item name="rippleDelayClick">true</item>
+<!--        <item name="rippleColor">#ffffff</item>-->
+<!--        <item name="rippleAlpha">0.5</item>-->
+<!--        <item name="rippleDimension">0dp</item>-->
+<!--        <item name="rippleDelayClick">true</item>-->
     </style>
 
     <style name="menu_ripple" parent="default_ripple">
@@ -20,11 +20,11 @@
     </style>
 
     <style name="click_ripple">
-        <item name="rippleColor">#ffffff</item>
-        <item name="rippleAlpha">0.5</item>
-        <item name="rippleDimension">0dp</item>
-        <item name="rippleDelayClick">true</item>
-        <item name="rippleDuration">200</item>
+<!--        <item name="rippleColor">#ffffff</item>-->
+<!--        <item name="rippleAlpha">0.5</item>-->
+<!--        <item name="rippleDimension">0dp</item>-->
+<!--        <item name="rippleDelayClick">true</item>-->
+<!--        <item name="rippleDuration">200</item>-->
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>

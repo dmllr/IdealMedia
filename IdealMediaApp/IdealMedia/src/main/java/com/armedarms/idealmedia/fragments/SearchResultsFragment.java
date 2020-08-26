@@ -2,10 +2,11 @@ package com.armedarms.idealmedia.fragments;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +17,9 @@ import com.armedarms.idealmedia.R;
 import com.armedarms.idealmedia.adapters.PlayerAdapter;
 import com.armedarms.idealmedia.domain.Playlist;
 import com.armedarms.idealmedia.domain.Track;
-import com.armedarms.idealmedia.tasks.TaskGetPlaylistVK;
 import com.armedarms.idealmedia.utils.FileUtils;
 import com.armedarms.idealmedia.utils.FillMediaStoreTracks;
 import com.armedarms.idealmedia.utils.ResUtils;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
-import com.vk.sdk.VKSdk;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -63,10 +60,6 @@ public class SearchResultsFragment extends PagingPlayingFragment implements IHas
         listView.setLayoutManager(new LinearLayoutManager(getActivity()));
         listView.setItemAnimator(new DefaultItemAnimator());
         listView.setAdapter(adapter);
-
-        Tracker t = ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER);
-        t.setScreenName("Playlist");
-        t.send(new HitBuilders.AppViewBuilder().build());
     }
 
     @Override
@@ -101,23 +94,6 @@ public class SearchResultsFragment extends PagingPlayingFragment implements IHas
         }.execute();
 
         page = 0L;
-        if (VKSdk.isLoggedIn() || VKSdk.wakeUpSession()) {
-            new TaskGetPlaylistVK(activity, new TaskGetPlaylistVK.OnTaskGetPlaylistListener() {
-                @Override
-                public void OnTaskResult(ArrayList<Track> tracks) {
-                    playlistResultsVK.getTracks().clear();
-
-                    if (null == tracks || tracks.size() == 0)
-                        Toast.makeText(activity, R.string.vk_empty_list, Toast.LENGTH_LONG).show();
-                    else
-                        appendTracks(tracks);
-                }
-            }).execute(TaskGetPlaylistVK.VK_METHOD_SEARCH, String.valueOf(page += 1), searchQuery);
-        } else {
-            Toast.makeText(activity, R.string.not_logged_in, Toast.LENGTH_LONG).show();
-
-            activity.setRefreshing(false);
-        }
     }
 
     private ArrayList<Track> getAllTracks() {
@@ -173,32 +149,7 @@ public class SearchResultsFragment extends PagingPlayingFragment implements IHas
         if (!isComplete && !activity.isRefreshing()) {
             activity.setRefreshing(true);
             isLoading = true;
-
-            new TaskGetPlaylistVK(activity, new TaskGetPlaylistVK.OnTaskGetPlaylistListener() {
-                @Override
-                public void OnTaskResult(ArrayList<Track> result) {
-                    appendTracks(result);
-                }
-            }).execute(TaskGetPlaylistVK.VK_METHOD_SEARCH, String.valueOf(page += 1), searchQuery);
         }
-    }
-
-    private void appendTracks(ArrayList<Track> tracks) {
-        isLoading = false;
-
-        if (null != tracks && isAdded()) {
-            isComplete = tracks.size() < TaskGetPlaylistVK.VK_PAGE_SIZE;
-
-            playlistResultsVK.getTracks().addAll(tracks);
-
-            setTracks(playlistResultsLocal, playlistResultsVK);
-            adapter.notifyDataSetChanged();
-        }
-
-        if (null == tracks || tracks.size() == 0)
-            Toast.makeText(activity, R.string.vk_empty_list, Toast.LENGTH_LONG).show();
-
-        activity.setRefreshing(false);
     }
 
     @Override

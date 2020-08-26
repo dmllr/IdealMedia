@@ -1,6 +1,7 @@
 package com.armedarms.idealmedia.fragments;
 
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
@@ -12,11 +13,6 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -29,15 +25,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+
 import com.armedarms.idealmedia.NavigationActivity;
 import com.armedarms.idealmedia.R;
 import com.armedarms.idealmedia.Settings;
 import com.armedarms.idealmedia.tools.TwitterShare;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
-import com.google.android.gms.plus.PlusShare;
-import com.vk.sdk.VKSdk;
-import com.vk.sdk.dialogs.VKShareDialog;
 
 import java.util.List;
 
@@ -157,18 +152,6 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
     }
 
     private void setSocialListeners() {
-        mDrawerView.findViewById(R.id.icon_social_vk).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                shareVK();
-            }
-        });
-        mDrawerView.findViewById(R.id.icon_social_gp).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                shareGplus();
-            }
-        });
         mDrawerView.findViewById(R.id.icon_social_tw).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -214,13 +197,8 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
 
         try {
             startActivity(intent);
-
-            ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER)
-                    .send(new HitBuilders.EventBuilder().setCategory("Support").setAction("Send").setLabel("Yes").build());
         } catch (android.content.ActivityNotFoundException ex) {
             Toast.makeText(getActivity(), getString(R.string.no_email_client), Toast.LENGTH_SHORT).show();
-            ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER)
-                    .send(new HitBuilders.EventBuilder().setCategory("Support").setAction("Send").setLabel("Error").build());
         }
     }
 
@@ -229,46 +207,6 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
             mDrawerLayout.closeDrawer(Gravity.START);
             mDrawerLayout.openDrawer(Gravity.END);
         }
-    }
-
-    private void shareVK() {
-        if (VKSdk.isLoggedIn() || VKSdk.wakeUpSession()) {
-            new VKShareDialog()
-                    .setText(getString(R.string.like_text))
-                    .setAttachmentLink(getString(R.string.like_url_title), getString(R.string.like_url))
-                    .setShareDialogListener(new VKShareDialog.VKShareDialogListener() {
-                        @Override
-                        public void onVkShareComplete(int i) {
-                            showThankYouToast();
-
-                            ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER)
-                                    .send(new HitBuilders.EventBuilder().setCategory("Sharing").setAction("VK").setLabel("OK").build());
-                        }
-
-                        @Override
-                        public void onVkShareCancel() {
-                            ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER)
-                                    .send(new HitBuilders.EventBuilder().setCategory("Sharing").setAction("VK").setLabel("Cancel").build());
-                        }
-                    })
-                    .show(getFragmentManager(), "SHARE");
-
-        } else
-            VKSdk.authorize(NavigationActivity.vkScope, true, false);
-    }
-
-    private void shareGplus() {
-        Intent shareIntent = new PlusShare.Builder(getActivity())
-                .setType("text/plain")
-                .setText(getString(R.string.like_text))
-                .setContentUrl(Uri.parse(getString(R.string.like_url)))
-                .getIntent();
-
-        startActivityForResult(shareIntent, 0);
-        showThankYouToast();
-
-        ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER)
-                .send(new HitBuilders.EventBuilder().setCategory("Sharing").setAction("Gplus").setLabel("OK").build());
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -287,9 +225,6 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
                 found = true;
                 twitterIntent.setPackage(p);
                 startActivity(twitterIntent);
-
-                ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER)
-                        .send(new HitBuilders.EventBuilder().setCategory("Sharing").setAction("Twitter").setLabel("App").build());
             }
         }
 
@@ -304,9 +239,6 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
             progressDialog.setMessage(getString(R.string.text_loading));
             progressDialog.setCancelable(true);
             progressDialog.show();
-
-            ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER)
-                    .send(new HitBuilders.EventBuilder().setCategory("Sharing").setAction("Twitter").setLabel("Web").build());
         }
     }
 
@@ -335,8 +267,10 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
         mDrawerLayout = drawerLayout;
 
         ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeButtonEnabled(true);
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
+        }
 
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the navigation drawer and the action bar app icon.
@@ -354,9 +288,6 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
                 }
 
                 getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
-
-                Tracker t = ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER);
-                t.send(new HitBuilders.EventBuilder().setCategory("UX").setAction("drawer").setLabel("opened").build());
             }
 
             @Override
@@ -376,9 +307,6 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
                 }
 
                 getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
-
-                Tracker t = ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER);
-                t.send(new HitBuilders.EventBuilder().setCategory("UX").setAction("drawer").setLabel("closed").build());
             }
         };
 
@@ -452,13 +380,13 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
      * 'context', rather than just what's in the current screen.
      */
     private void showGlobalContextActionBar() {
-        ActionBar actionBar = getActionBar();
+        android.app.ActionBar actionBar = getActionBar();
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(R.string.app_name);
     }
 
-    private ActionBar getActionBar() {
-        return ((ActionBarActivity)getActivity()).getSupportActionBar();
+    private android.app.ActionBar getActionBar() {
+        return getActivity().getActionBar();
     }
 
     @Override
@@ -497,9 +425,6 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
             item = MenuLine.DEVICE_ARTISTS;
         if (view.getId() == R.id.menu_device_albums)
             item = MenuLine.DEVICE_ALBUMS;
-
-        ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER)
-            .send(new HitBuilders.EventBuilder().setCategory("UX").setAction("menu").setLabel(item.name()).build());
 
         mCallbacks.onNavigationDrawerItemSelected(item, storedSearchQuery);
     }

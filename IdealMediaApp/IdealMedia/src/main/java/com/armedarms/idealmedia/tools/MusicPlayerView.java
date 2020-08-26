@@ -602,7 +602,7 @@ public class MusicPlayerView extends View {
      * @param imageUrl
      */
     public void setCoverURL(String imageUrl) {
-        Picasso.with(getContext()).load(imageUrl).into(target);
+//        Picasso.with(getContext()).load(imageUrl).into(target);
     }
 
     /**
@@ -618,7 +618,7 @@ public class MusicPlayerView extends View {
         }
 
         @Override
-        public void onBitmapFailed(Drawable errorDrawable) {
+        public void onBitmapFailed(Exception e, Drawable errorDrawable) {
 
         }
 

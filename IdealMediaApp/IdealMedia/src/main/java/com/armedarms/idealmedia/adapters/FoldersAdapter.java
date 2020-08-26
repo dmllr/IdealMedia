@@ -1,13 +1,14 @@
 package com.armedarms.idealmedia.adapters;
 
 import android.content.res.Resources;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.armedarms.idealmedia.NavigationActivity;
 import com.armedarms.idealmedia.R;
@@ -113,7 +114,7 @@ public class FoldersAdapter extends RecyclerView.Adapter<FoldersAdapter.FoldersV
             title = (TextView)view.findViewById(R.id.textView);
             actionToPlaylist = view.findViewById(R.id.actionToPlaylist);
 
-            viewPager = (ViewPager)view.findViewById(R.id.viewPager);
+            viewPager = view.findViewById(R.id.viewPager);
             mainView = viewPager.findViewById(R.id.item_page_0);
         }
     }

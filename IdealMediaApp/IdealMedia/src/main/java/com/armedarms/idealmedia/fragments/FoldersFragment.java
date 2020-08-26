@@ -2,25 +2,21 @@ package com.armedarms.idealmedia.fragments;
 
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.armedarms.idealmedia.NavigationActivity;
 import com.armedarms.idealmedia.R;
 import com.armedarms.idealmedia.adapters.FoldersAdapter;
 import com.armedarms.idealmedia.domain.Playlist;
 import com.armedarms.idealmedia.dialogs.DialogSelectDirectory;
-import com.armedarms.idealmedia.domain.Track;
 import com.armedarms.idealmedia.tasks.TaskGetPlaylistFilesystem;
-import com.armedarms.idealmedia.utils.FileUtils;
 import com.armedarms.idealmedia.utils.ResUtils;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
 
 import java.util.ArrayList;
 
@@ -57,10 +53,6 @@ public class FoldersFragment extends BaseFragment implements IHasColor, TaskGetP
         listView = (RecyclerView) view.findViewById(android.R.id.list);
         listView.setLayoutManager(new LinearLayoutManager(getActivity()));
         listView.setItemAnimator(new DefaultItemAnimator());
-
-        Tracker t = ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER);
-        t.setScreenName("Folders and files");
-        t.send(new HitBuilders.AppViewBuilder().build());
     }
 
     public void update(boolean refresh) {
