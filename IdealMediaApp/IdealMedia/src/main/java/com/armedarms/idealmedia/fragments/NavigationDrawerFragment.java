@@ -13,7 +13,6 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -26,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
@@ -68,7 +68,6 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
 
 
     private int mCurrentSelectedPosition = 0;
-    private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
 
     EditText textSearch;
@@ -85,7 +84,7 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
 
         if (savedInstanceState != null) {
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
-            mFromSavedInstanceState = true;
+            boolean mFromSavedInstanceState = true;
         }
 
         // Select either the default item (0) or the last selected item.
@@ -188,24 +187,10 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
         }
     }
 
-    private void sendSupportMail() {
-        final Intent intent = new Intent(Intent.ACTION_SENDTO);
-
-        intent.setType("message/rfc822");
-        intent.setData(Uri.parse(String.format("mailto:%s?subject=%s", getString(R.string.support_email), Uri.encode(getString(R.string.app_name)))));
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-        try {
-            startActivity(intent);
-        } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(getActivity(), getString(R.string.no_email_client), Toast.LENGTH_SHORT).show();
-        }
-    }
-
     private void openSettings() {
         if (mDrawerLayout != null) {
-            mDrawerLayout.closeDrawer(Gravity.START);
-            mDrawerLayout.openDrawer(Gravity.END);
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+            mDrawerLayout.openDrawer(GravityCompat.END);
         }
     }
 

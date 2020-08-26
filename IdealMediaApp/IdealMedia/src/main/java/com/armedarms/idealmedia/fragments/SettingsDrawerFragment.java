@@ -169,7 +169,7 @@ public class SettingsDrawerFragment extends Fragment implements View.OnClickList
     private void toggleMediaMethod() {
         boolean fullScan = PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean(getString(R.string.key_media_method_full), false);
         fullScan = !fullScan;
-        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putBoolean(getString(R.string.key_media_method_full), fullScan).commit();
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putBoolean(getString(R.string.key_media_method_full), fullScan).apply();
 
         textMediaMethod.setText(fullScan ? R.string.settings_media_method_full : R.string.settings_media_method_quick);
         viewMediaPathPref.setVisibility(fullScan ? View.VISIBLE : View.GONE);
@@ -192,7 +192,7 @@ public class SettingsDrawerFragment extends Fragment implements View.OnClickList
                 new DialogSelectDirectory.Result() {
                     @Override
                     public void onChooseDirectory(String dir) {
-                        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString(getString(R.string.key_mediapath), dir).commit();
+                        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString(getString(R.string.key_mediapath), dir).apply();
                         textMediaPath.setText(dir);
 
                         if (mListener != null)

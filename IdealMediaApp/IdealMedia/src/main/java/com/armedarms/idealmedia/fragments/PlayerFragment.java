@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.armedarms.idealmedia.NavigationActivity;
 import com.armedarms.idealmedia.R;
 import com.armedarms.idealmedia.adapters.PlayerAdapter;
 import com.armedarms.idealmedia.domain.Track;

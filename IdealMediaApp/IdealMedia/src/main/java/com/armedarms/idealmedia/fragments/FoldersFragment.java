@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.armedarms.idealmedia.NavigationActivity;
 import com.armedarms.idealmedia.R;
 import com.armedarms.idealmedia.adapters.FoldersAdapter;
 import com.armedarms.idealmedia.domain.Playlist;
@@ -79,13 +78,13 @@ public class FoldersFragment extends BaseFragment implements IHasColor, TaskGetP
                         @Override
                         public void onChooseDirectory(String dir) {
                             mediaPath = dir;
-                            PreferenceManager.getDefaultSharedPreferences(activity).edit().putString(getString(R.string.key_mediapath), dir).commit();
+                            PreferenceManager.getDefaultSharedPreferences(activity).edit().putString(getString(R.string.key_mediapath), dir).apply();
                             update(true);
                         }
 
                         @Override
                         public void onCancelChooseDirectory() {
-                            PreferenceManager.getDefaultSharedPreferences(activity).edit().putString(getString(R.string.key_mediapath), "/").commit();
+                            PreferenceManager.getDefaultSharedPreferences(activity).edit().putString(getString(R.string.key_mediapath), "/").apply();
                         }
                     },
                     "/");

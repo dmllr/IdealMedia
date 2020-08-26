@@ -67,6 +67,8 @@ import java.util.UUID;
 
 import com.armedarms.idealmedia.tools.MusicPlayerView;
 
+import org.jetbrains.annotations.NotNull;
+
 import libs.SlidingUpPanelLayout;
 
 import static com.armedarms.idealmedia.R.id.*;
@@ -285,7 +287,7 @@ public class NavigationActivity
         }
 
         start++;
-        PreferenceManager.getDefaultSharedPreferences(this).edit().putInt("start", start).commit();
+        PreferenceManager.getDefaultSharedPreferences(this).edit().putInt("start", start).apply();
     }
 
     private void queryIabInventoryAsync() {
@@ -294,7 +296,7 @@ public class NavigationActivity
             public void onQueryInventoryFinished(IabResult result, Inventory inv) {
                 iabInventory = inv;
 
-                PreferenceManager.getDefaultSharedPreferences(NavigationActivity.this).edit().putBoolean(getString(R.string.hasPremium), iabInventory.hasPurchase(Settings.SKU_PREMIUM)).commit();
+                PreferenceManager.getDefaultSharedPreferences(NavigationActivity.this).edit().putBoolean(getString(R.string.hasPremium), iabInventory.hasPurchase(Settings.SKU_PREMIUM)).apply();
 
                 if (mSettingsDrawerFragment != null)
                     mSettingsDrawerFragment.update();
@@ -781,7 +783,7 @@ public class NavigationActivity
     }
 
     private void setShuffleMode(boolean mode){
-        PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putBoolean("Shuffle", mode).commit();
+        PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putBoolean("Shuffle", mode).apply();
         mBoundService.setShuffle(mode);
         if (playingFragment != null)
             playingFragment.shuffleItems();
@@ -793,7 +795,7 @@ public class NavigationActivity
     }
 
     @Override
-    public void onAttachFragment(Fragment fragment) {
+    public void onAttachFragment(@NotNull Fragment fragment) {
         super.onAttachFragment(fragment);
 
         if (fragment instanceof BaseFragment) {
@@ -948,7 +950,7 @@ public class NavigationActivity
 
     @Override
     public void switchTheme(int themeIndex) {
-        PreferenceManager.getDefaultSharedPreferences(this).edit().putInt(getString(R.string.key_theme), themeIndex).commit();
+        PreferenceManager.getDefaultSharedPreferences(this).edit().putInt(getString(R.string.key_theme), themeIndex).apply();
 
         finish();
 
