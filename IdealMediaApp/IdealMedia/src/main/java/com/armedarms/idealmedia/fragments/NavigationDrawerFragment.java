@@ -1,7 +1,6 @@
 package com.armedarms.idealmedia.fragments;
 
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
@@ -24,6 +23,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -365,13 +365,13 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
      * 'context', rather than just what's in the current screen.
      */
     private void showGlobalContextActionBar() {
-        android.app.ActionBar actionBar = getActionBar();
+        androidx.appcompat.app.ActionBar actionBar = getActionBar();
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(R.string.app_name);
     }
 
-    private android.app.ActionBar getActionBar() {
-        return getActivity().getActionBar();
+    private androidx.appcompat.app.ActionBar getActionBar() {
+        return ((NavigationActivity)getActivity()).getSupportActionBar();
     }
 
     @Override

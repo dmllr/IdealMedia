@@ -76,7 +76,7 @@ import static com.armedarms.idealmedia.R.id.*;
 
 public class NavigationActivity
         extends
-            androidx.fragment.app.FragmentActivity
+            androidx.appcompat.app.AppCompatActivity
         implements
             NavigationDrawerFragment.NavigationDrawerCallbacks,
             SettingsDrawerFragment.OnSettingsInteractionListener,
@@ -240,7 +240,7 @@ public class NavigationActivity
             FragmentHistoryItem fhi = fragmentHistory.peek();
             putFragment(fhi.fragment, false);
 
-            getActionBar().setTitle(getFragmentTitle(fhi.fragment));
+            getSupportActionBar().setTitle(getFragmentTitle(fhi.fragment));
         } else
             super.onBackPressed();
     }
@@ -422,7 +422,7 @@ public class NavigationActivity
             @Override
             public void run() {
                 if (getActionBar() != null)
-                    getActionBar().setBackgroundDrawable(new ColorDrawable(color));
+                    getSupportActionBar().setBackgroundDrawable(new ColorDrawable(color));
 
                 View view = findViewById(R.id.drawer_layout);
                 if (view != null)
@@ -632,8 +632,8 @@ public class NavigationActivity
 
     public void restoreActionBar() {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);
-        getActionBar().setDisplayShowTitleEnabled(true);
-        getActionBar().setTitle(getFragmentTitle(fragment));
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setTitle(getFragmentTitle(fragment));
     }
 
     @Override
