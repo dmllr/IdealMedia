@@ -942,12 +942,7 @@ public class NavigationActivity
     public void switchTheme(int themeIndex) {
         PreferenceManager.getDefaultSharedPreferences(this).edit().putInt(getString(R.string.key_theme), themeIndex).apply();
 
-        finish();
-
-        Intent intent = new Intent(this, NavigationActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+        recreate();
     }
 
     @Override
