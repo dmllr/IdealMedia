@@ -6,15 +6,10 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,9 +17,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
+
 import com.armedarms.idealmedia.NavigationActivity;
 import com.armedarms.idealmedia.R;
-import com.armedarms.idealmedia.Settings;
 import com.armedarms.idealmedia.domain.Playlist;
 import com.armedarms.idealmedia.domain.PlaylistItem;
 import com.armedarms.idealmedia.domain.Track;
@@ -35,11 +33,6 @@ import com.armedarms.idealmedia.utils.MediaUtils;
 import libs.CircularProgressButton;
 
 import com.armedarms.idealmedia.utils.ResUtils;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
 import com.r0adkll.postoffice.PostOffice;
 import com.r0adkll.postoffice.model.Design;
 
@@ -175,8 +168,6 @@ public class PlayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         if (inflater == null)
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        if (viewType == PlaylistItem.ItemType.AD.ordinal())
-            return getAdViewHolder(parent);
         if (viewType == PlaylistItem.ItemType.TITLE.ordinal())
             return getTitleViewHolder(parent);
         if (viewType == PlaylistItem.ItemType.TRACK.ordinal())
@@ -242,53 +233,6 @@ public class PlayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         View view = inflater.inflate(R.layout.cell_track_message, parent, false);
 
         return new MessageViewHolder(view);
-    }
-
-    private RecyclerView.ViewHolder getAdViewHolder(ViewGroup parent) {
-        View view = inflater.inflate(R.layout.cell_track_ads, parent, false);
-
-        AdView adView = (AdView)view.findViewById(R.id.adView);
-
-        final View finalView = view;
-        adView.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                finalView.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        View v = finalView.findViewById(R.id.adViewOffline);
-                        if (v != null)
-                            v.setVisibility(View.GONE);
-                    }
-                });
-            }
-
-            @Override
-            public void onAdFailedToLoad(int errorCode) {
-                finalView.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        View v = finalView.findViewById(R.id.adViewOffline);
-                        if (v != null) {
-                            v.setVisibility(View.VISIBLE);
-                            v.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    openPremiumAtMarket();
-                                }
-                            });
-                        }
-                    }
-                });
-            }
-        });
-
-        AdRequest.Builder builder = new AdRequest.Builder();
-        AdRequest adRequest = builder.build();
-        adView.loadAd(adRequest);
-
-
-        return new AdViewHolder(view);
     }
 
     private void bindTrackViewHolder(final TrackViewHolder holder, final int position) {
@@ -445,9 +389,6 @@ public class PlayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             holder.downloadProgress.setProgress(-1);
             holder.downloadProgress.setVisibility(View.GONE);
         }
-
-        Tracker t = ((NavigationActivity) adapter.fragment.getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER);
-        t.send(new HitBuilders.EventBuilder().setCategory("Track").setAction("download").build());
 
         new Thread(new Runnable() {
             @Override

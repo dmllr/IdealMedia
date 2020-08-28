@@ -20,9 +20,7 @@ import android.content.Context;
 import android.graphics.PixelFormat;
 import android.graphics.Point;
 import android.graphics.Rect;
-import android.os.Build;
 import android.os.IBinder;
-import android.support.v4.view.GravityCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -30,6 +28,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+
+import androidx.core.view.GravityCompat;
 
 import org.adw.library.widgets.discreteseekbar.internal.compat.SeekBarCompat;
 import org.adw.library.widgets.discreteseekbar.internal.drawable.MarkerDrawable;

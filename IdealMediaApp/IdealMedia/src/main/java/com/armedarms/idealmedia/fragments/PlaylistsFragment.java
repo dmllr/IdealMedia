@@ -3,24 +3,20 @@ package com.armedarms.idealmedia.fragments;
 
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
+
 import android.text.InputType;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.armedarms.idealmedia.NavigationActivity;
@@ -29,8 +25,6 @@ import com.armedarms.idealmedia.adapters.LRViewPagerAdapter;
 import com.armedarms.idealmedia.domain.Playlist;
 import com.armedarms.idealmedia.utils.FileUtils;
 import com.armedarms.idealmedia.utils.ResUtils;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
 import com.r0adkll.postoffice.PostOffice;
 import com.r0adkll.postoffice.model.Design;
 import com.r0adkll.postoffice.styles.EditTextStyle;
@@ -73,10 +67,6 @@ public class PlaylistsFragment extends BaseFragment implements IHasColor {
                 newPlaylist();
             }
         });
-
-        Tracker t = ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER);
-        t.setScreenName("List of playlists");
-        t.send(new HitBuilders.AppViewBuilder().build());
     }
 
     private void newPlaylist() {

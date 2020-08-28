@@ -2,10 +2,11 @@ package com.armedarms.idealmedia.fragments;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +19,6 @@ import com.armedarms.idealmedia.domain.Track;
 import com.armedarms.idealmedia.utils.FileUtils;
 import com.armedarms.idealmedia.utils.FillMediaStoreTracks;
 import com.armedarms.idealmedia.utils.ResUtils;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -45,10 +44,6 @@ public class PlaylistFragment extends BasePlayingFragment implements IHasColor {
         listView.setLayoutManager(new LinearLayoutManager(getActivity()));
         listView.setItemAnimator(new DefaultItemAnimator());
         listView.setAdapter(adapter);
-
-        Tracker t = ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER);
-        t.setScreenName("Playlist");
-        t.send(new HitBuilders.AppViewBuilder().build());
     }
 
     @Override

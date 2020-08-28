@@ -5,17 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/track_cell_front"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:showIn="@layout/track_cell">
-
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        app:adSize="SMART_BANNER"
-        app:adUnitId="@string/admob_inlist_banner">
-    </com.google.android.gms.ads.AdView>
+    android:layout_height="wrap_content">
 
     <libs.MaterialRippleLayout style="@style/menu_ripple">
         <LinearLayout

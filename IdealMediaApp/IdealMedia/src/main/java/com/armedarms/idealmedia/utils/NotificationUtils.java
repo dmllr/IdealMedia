@@ -24,7 +24,7 @@ public class NotificationUtils {
             notification.contentView = getNotificationViews(track, context, isPlaying);
         }
         else {
-            notification.setLatestEventInfo(context, "", "", pendingIntent);
+//            notification.setLatestEventInfo(context, "", "", pendingIntent);
         }
         notification.flags |= Notification.FLAG_FOREGROUND_SERVICE;
         notification.contentIntent = pendingIntent;

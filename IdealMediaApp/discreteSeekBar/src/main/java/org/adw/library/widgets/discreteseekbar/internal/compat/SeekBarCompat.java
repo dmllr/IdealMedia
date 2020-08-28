@@ -19,10 +19,11 @@ package org.adw.library.widgets.discreteseekbar.internal.compat;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.view.View;
 import android.view.ViewParent;
 import android.widget.TextView;
+
+import androidx.core.graphics.drawable.DrawableCompat;
 
 import org.adw.library.widgets.discreteseekbar.internal.drawable.AlmostRippleDrawable;
 import org.adw.library.widgets.discreteseekbar.internal.drawable.MarkerDrawable;

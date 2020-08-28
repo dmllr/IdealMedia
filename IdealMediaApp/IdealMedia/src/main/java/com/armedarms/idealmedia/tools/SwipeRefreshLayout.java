@@ -1,23 +1,24 @@
 package com.armedarms.idealmedia.tools;
 
 import android.content.Context;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.armedarms.idealmedia.R;
 
-public class SwipeRefreshLayout extends android.support.v4.widget.SwipeRefreshLayout {
+public class SwipeRefreshLayout extends androidx.swiperefreshlayout.widget.SwipeRefreshLayout {
     RecyclerView cachedListView = null;
 
-    public SwipeRefreshLayout(Context context) {
+    public SwipeRefreshLayout(@NonNull Context context) {
         super(context);
     }
 
-    public SwipeRefreshLayout(Context context, AttributeSet attrs) {
+    public SwipeRefreshLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 

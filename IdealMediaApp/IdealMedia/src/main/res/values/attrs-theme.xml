@@ -6,8 +6,6 @@
     <attr name="drawableHeadBackground" format="reference|color"/>
     <attr name="colorPlaylists" format="reference|color"/>
     <attr name="drawablePlaylistsSubLine" format="reference"/>
-    <attr name="colorVK" format="reference|color"/>
-    <attr name="drawableVKSubLine" format="reference"/>
     <attr name="colorFolders" format="reference|color"/>
     <attr name="drawableFoldersSubLine" format="reference"/>
     <attr name="colorPreferences" format="reference|color"/>

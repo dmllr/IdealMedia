@@ -9,41 +9,6 @@
 
     <ImageView
         style="@style/icon_social"
-        android:id="@+id/icon_social_vk"
-        android:src="@drawable/ic_vk" />
-    <ImageView
-        style="@style/icon_social"
-        android:visibility="gone"
-        android:id="@+id/icon_social_fb"
-        android:src="@drawable/ic_facebook" />
-    <ImageView
-        style="@style/icon_social"
-        android:id="@+id/icon_social_gp"
-        android:src="@drawable/ic_googleplus" />
-    <ImageView
-        style="@style/icon_social"
-        android:id="@+id/icon_social_tw"
-        android:src="@drawable/ic_twitter" />
-    <ImageView
-        style="@style/icon_social"
-        android:visibility="gone"
-        android:id="@+id/icon_social_play"
-        android:src="@drawable/ic_googleplay" />
-    <ImageView
-        style="@style/icon_social"
         android:id="@+id/icon_settings"
         android:src="@drawable/ic_settings" />
-    <ImageView
-        style="@style/icon_social"
-        android:visibility="gone"
-        android:id="@+id/icon_support"
-        android:src="@drawable/ic_support" />
-    <ImageView
-        style="@style/icon_social"
-        android:visibility="gone"
-        android:id="@+id/icon_exit"
-        android:src="@drawable/ic_exit" />
-
 </LinearLayout>
-
-            

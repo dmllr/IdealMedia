@@ -14,9 +14,6 @@
         <item name="colorPlaylists">#1e1e1e</item>
         <item name="drawablePlaylistsSubLine">@drawable/bg_menu_line_1_sub__dark</item>
 
-        <item name="colorVK">#1e1e1e</item>
-        <item name="drawableVKSubLine">@drawable/bg_menu_line_1_sub__dark</item>
-
         <item name="colorFolders">#1e1e1e</item>
         <item name="drawableFoldersSubLine">@drawable/bg_menu_line_1_sub__dark</item>
 

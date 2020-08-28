@@ -12,12 +12,6 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -29,15 +23,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+
 import com.armedarms.idealmedia.NavigationActivity;
 import com.armedarms.idealmedia.R;
 import com.armedarms.idealmedia.Settings;
 import com.armedarms.idealmedia.tools.TwitterShare;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
-import com.google.android.gms.plus.PlusShare;
-import com.vk.sdk.VKSdk;
-import com.vk.sdk.dialogs.VKShareDialog;
 
 import java.util.List;
 
@@ -48,10 +43,7 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
         PLAYLISTS_ALL_MUSIC,
         PLAYLISTS_NOW_PLAYING,
         PLAYLISTS_PLAYBACK_HISTORY,
-        VK,
         SEARCH,
-        VK_POPULAR,
-        VK_RECOMMENDATIONS,
         DEVICE,
         DEVICE_TRACKS,
         DEVICE_ARTISTS,
@@ -69,11 +61,9 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
     private View mDrawerView;
     private View mFragmentContainerView;
     private String storedSearchQuery;
-    private View vkSearchItem;
 
 
     private int mCurrentSelectedPosition = 0;
-    private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
 
     EditText textSearch;
@@ -90,7 +80,7 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
 
         if (savedInstanceState != null) {
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
-            mFromSavedInstanceState = true;
+            boolean mFromSavedInstanceState = true;
         }
 
         // Select either the default item (0) or the last selected item.
@@ -111,17 +101,9 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
         mDrawerView = inflater.inflate(R.layout.fragment_navigation_drawer, container,  true);
 
         setOnClickListeners();
-
         setSocialListeners();
-        mDrawerView.findViewById(R.id.icon_exit).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                System.runFinalization();
-                System.exit(0);
-            }
-        });
 
-        textSearch = (EditText)mDrawerView.findViewById(R.id.textSearch);
+        textSearch = mDrawerView.findViewById(R.id.textSearch);
         textSearch.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
@@ -146,10 +128,6 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
         mDrawerView.findViewById(R.id.menu_playlists_all_music).setOnClickListener(this);
         mDrawerView.findViewById(R.id.menu_playlists_playing).setOnClickListener(this);
         mDrawerView.findViewById(R.id.menu_playlists_playback_history).setOnClickListener(this);
-        mDrawerView.findViewById(R.id.menu_vk).setOnClickListener(this);
-        (vkSearchItem = mDrawerView.findViewById(R.id.menu_vk_search)).setOnClickListener(this);
-        mDrawerView.findViewById(R.id.menu_vk_popular).setOnClickListener(this);
-        mDrawerView.findViewById(R.id.menu_vk_recommendations).setOnClickListener(this);
         mDrawerView.findViewById(R.id.menu_device).setOnClickListener(this);
         mDrawerView.findViewById(R.id.menu_device_tracks).setOnClickListener(this);
         mDrawerView.findViewById(R.id.menu_device_artists).setOnClickListener(this);
@@ -157,30 +135,6 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
     }
 
     private void setSocialListeners() {
-        mDrawerView.findViewById(R.id.icon_social_vk).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                shareVK();
-            }
-        });
-        mDrawerView.findViewById(R.id.icon_social_gp).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                shareGplus();
-            }
-        });
-        mDrawerView.findViewById(R.id.icon_social_tw).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                shareTwitter();
-            }
-        });
-        mDrawerView.findViewById(R.id.icon_social_play).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                rateThisApp();
-            }
-        });
         mDrawerView.findViewById(R.id.icon_settings).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -189,130 +143,11 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
         });
     }
 
-    private void rateThisApp() {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("market://details?id=" + getActivity().getPackageName()));
-
-        try {
-            startActivity(intent);
-        } catch (ActivityNotFoundException e) {
-            intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=" + getActivity().getPackageName()));
-            try {
-                startActivity(intent);
-            } catch (ActivityNotFoundException e1) {
-                Toast.makeText(getActivity(), getString(R.string.text_no_market_app), Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-    private void sendSupportMail() {
-        final Intent intent = new Intent(Intent.ACTION_SENDTO);
-
-        intent.setType("message/rfc822");
-        intent.setData(Uri.parse(String.format("mailto:%s?subject=%s", getString(R.string.support_email), Uri.encode(getString(R.string.app_name)))));
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-        try {
-            startActivity(intent);
-
-            ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER)
-                    .send(new HitBuilders.EventBuilder().setCategory("Support").setAction("Send").setLabel("Yes").build());
-        } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(getActivity(), getString(R.string.no_email_client), Toast.LENGTH_SHORT).show();
-            ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER)
-                    .send(new HitBuilders.EventBuilder().setCategory("Support").setAction("Send").setLabel("Error").build());
-        }
-    }
-
     private void openSettings() {
         if (mDrawerLayout != null) {
-            mDrawerLayout.closeDrawer(Gravity.START);
-            mDrawerLayout.openDrawer(Gravity.END);
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+            mDrawerLayout.openDrawer(GravityCompat.END);
         }
-    }
-
-    private void shareVK() {
-        if (VKSdk.isLoggedIn() || VKSdk.wakeUpSession()) {
-            new VKShareDialog()
-                    .setText(getString(R.string.like_text))
-                    .setAttachmentLink(getString(R.string.like_url_title), getString(R.string.like_url))
-                    .setShareDialogListener(new VKShareDialog.VKShareDialogListener() {
-                        @Override
-                        public void onVkShareComplete(int i) {
-                            showThankYouToast();
-
-                            ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER)
-                                    .send(new HitBuilders.EventBuilder().setCategory("Sharing").setAction("VK").setLabel("OK").build());
-                        }
-
-                        @Override
-                        public void onVkShareCancel() {
-                            ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER)
-                                    .send(new HitBuilders.EventBuilder().setCategory("Sharing").setAction("VK").setLabel("Cancel").build());
-                        }
-                    })
-                    .show(getFragmentManager(), "SHARE");
-
-        } else
-            VKSdk.authorize(NavigationActivity.vkScope, true, false);
-    }
-
-    private void shareGplus() {
-        Intent shareIntent = new PlusShare.Builder(getActivity())
-                .setType("text/plain")
-                .setText(getString(R.string.like_text))
-                .setContentUrl(Uri.parse(getString(R.string.like_url)))
-                .getIntent();
-
-        startActivityForResult(shareIntent, 0);
-        showThankYouToast();
-
-        ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER)
-                .send(new HitBuilders.EventBuilder().setCategory("Sharing").setAction("Gplus").setLabel("OK").build());
-    }
-
-    @SuppressLint("SetJavaScriptEnabled")
-    private void shareTwitter() {
-        Intent twitterIntent = new Intent();
-        twitterIntent.setType("text/plain");
-        twitterIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.like_text));
-
-        final PackageManager packageManager = getActivity().getPackageManager();
-        List<ResolveInfo> list = packageManager.queryIntentActivities(twitterIntent, PackageManager.MATCH_DEFAULT_ONLY);
-
-        boolean found = false;
-        for (ResolveInfo resolveInfo : list) {
-            String p = resolveInfo.activityInfo.packageName;
-            if (p != null && p.startsWith("com.twitter.android")) {
-                found = true;
-                twitterIntent.setPackage(p);
-                startActivity(twitterIntent);
-
-                ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER)
-                        .send(new HitBuilders.EventBuilder().setCategory("Sharing").setAction("Twitter").setLabel("App").build());
-            }
-        }
-
-        if (!found) {
-            ProgressDialog progressDialog = new ProgressDialog(getActivity());
-
-            TwitterShare d = new TwitterShare(
-                    getActivity(), progressDialog,
-                    "http://twitter.com/share?text=" + Uri.encode(getString(R.string.like_text_twitter)) + "&url=" + Uri.parse(getString(R.string.like_url)));
-            d.show();
-
-            progressDialog.setMessage(getString(R.string.text_loading));
-            progressDialog.setCancelable(true);
-            progressDialog.show();
-
-            ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER)
-                    .send(new HitBuilders.EventBuilder().setCategory("Sharing").setAction("Twitter").setLabel("Web").build());
-        }
-    }
-
-
-    private void showThankYouToast() {
-        Toast.makeText(getActivity(), String.format(getString(R.string.like_thanks_for_sharing), getString(R.string.app_name)), Toast.LENGTH_LONG).show();
     }
 
     public boolean isDrawerOpen() {
@@ -335,8 +170,10 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
         mDrawerLayout = drawerLayout;
 
         ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeButtonEnabled(true);
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
+        }
 
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the navigation drawer and the action bar app icon.
@@ -354,9 +191,6 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
                 }
 
                 getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
-
-                Tracker t = ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER);
-                t.send(new HitBuilders.EventBuilder().setCategory("UX").setAction("drawer").setLabel("opened").build());
             }
 
             @Override
@@ -376,9 +210,6 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
                 }
 
                 getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
-
-                Tracker t = ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER);
-                t.send(new HitBuilders.EventBuilder().setCategory("UX").setAction("drawer").setLabel("closed").build());
             }
         };
 
@@ -452,13 +283,13 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
      * 'context', rather than just what's in the current screen.
      */
     private void showGlobalContextActionBar() {
-        ActionBar actionBar = getActionBar();
+        androidx.appcompat.app.ActionBar actionBar = getActionBar();
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(R.string.app_name);
     }
 
-    private ActionBar getActionBar() {
-        return ((ActionBarActivity)getActivity()).getSupportActionBar();
+    private androidx.appcompat.app.ActionBar getActionBar() {
+        return ((NavigationActivity)getActivity()).getSupportActionBar();
     }
 
     @Override
@@ -473,22 +304,6 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
             item = MenuLine.PLAYLISTS_NOW_PLAYING;
         if (view.getId() == R.id.menu_playlists_playback_history)
             item = MenuLine.PLAYLISTS_PLAYBACK_HISTORY;
-        if (view.getId() == R.id.menu_vk)
-            item = MenuLine.VK;
-        if (view.getId() == R.id.menu_vk_popular)
-            item = MenuLine.VK_POPULAR;
-        if (view.getId() == R.id.menu_vk_recommendations)
-            item = MenuLine.VK_RECOMMENDATIONS;
-        if (view.getId() == R.id.menu_vk_search) {
-            if ("".equals(storedSearchQuery)) {
-                TextView textStoredSearch = (TextView)vkSearchItem.findViewById(R.id.textStoredSearch);
-                storedSearchQuery = textStoredSearch.getText().toString().replace("\"", "");
-            }
-            if (!"".equals(storedSearchQuery))
-                item = MenuLine.SEARCH;
-            else
-                item = MenuLine.VK_POPULAR;
-        }
         if (view.getId() == R.id.menu_device)
             item = MenuLine.DEVICE;
         if (view.getId() == R.id.menu_device_tracks)
@@ -498,31 +313,10 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
         if (view.getId() == R.id.menu_device_albums)
             item = MenuLine.DEVICE_ALBUMS;
 
-        ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER)
-            .send(new HitBuilders.EventBuilder().setCategory("UX").setAction("menu").setLabel(item.name()).build());
-
         mCallbacks.onNavigationDrawerItemSelected(item, storedSearchQuery);
     }
 
-    public void storeSearchQuery(String query) {
-        TextView textStoredSearch = (TextView)vkSearchItem.findViewById(R.id.textStoredSearch);
-        if (textStoredSearch != null) {
-            storedSearchQuery = query;
-            textStoredSearch.setText(String.format("\"%s\"", storedSearchQuery));
-            vkSearchItem.setVisibility(View.VISIBLE);
-        }
-    }
-
-    public void clearStoredSearch() {
-        TextView textStoredSearch = (TextView)vkSearchItem.findViewById(R.id.textStoredSearch);
-        if (textStoredSearch != null) {
-            storedSearchQuery = "";
-            textStoredSearch.setText("");
-            vkSearchItem.setVisibility(View.GONE);
-        }
-    }
-
-    public static interface NavigationDrawerCallbacks {
+    public interface NavigationDrawerCallbacks {
         void onNavigationDrawerItemSelected(MenuLine item, String param);
     }
 }

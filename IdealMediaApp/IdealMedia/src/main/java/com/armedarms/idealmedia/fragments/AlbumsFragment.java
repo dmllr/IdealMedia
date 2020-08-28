@@ -3,19 +3,13 @@ package com.armedarms.idealmedia.fragments;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 
-import com.androidquery.util.AQUtility;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.armedarms.idealmedia.NavigationActivity;
 import com.armedarms.idealmedia.R;
@@ -23,8 +17,6 @@ import com.armedarms.idealmedia.domain.Track;
 import com.armedarms.idealmedia.tasks.TaskGetAlbums;
 import com.armedarms.idealmedia.adapters.AlbumsAdapter;
 import com.armedarms.idealmedia.utils.FileUtils;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
 
 import java.util.ArrayList;
 
@@ -47,11 +39,11 @@ public class AlbumsFragment extends BaseFragment implements TaskGetAlbums.OnTask
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view,savedInstanceState);
 
-        list = (RecyclerView)view.findViewById(android.R.id.list);
+        list = view.findViewById(android.R.id.list);
         list.setItemAnimator(new DefaultItemAnimator());
         setLayoutManager();
 
-        progress = (CircularProgressButton)view.findViewById(android.R.id.progress);
+        progress = view.findViewById(android.R.id.progress);
         empty = view.findViewById(android.R.id.empty);
 
         new AsyncTask<Void, Void, ArrayList<Track>>() {
@@ -73,10 +65,6 @@ public class AlbumsFragment extends BaseFragment implements TaskGetAlbums.OnTask
                 OnTaskResult(tracks);
             }
         }.execute();
-
-        Tracker t = ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER);
-        t.setScreenName("Albums");
-        t.send(new HitBuilders.AppViewBuilder().build());
     }
 
     @Override

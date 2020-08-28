@@ -6,14 +6,13 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Build;
-import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import org.jetbrains.annotations.NotNull;
+import androidx.core.view.MotionEventCompat;
 
-import java.util.Scanner;
+import org.jetbrains.annotations.NotNull;
 
 public class Wave extends View {
     public final int DEFAULT_ABOVE_WAVE_ALPHA = 60;

@@ -104,64 +104,6 @@
         <libs.MaterialRippleLayout style="@style/menu_ripple">
             <LinearLayout
                 style="@style/menu_line"
-                android:id="@+id/menu_vk"
-                android:background="?colorVK" >
-                <ImageView
-                    android:src="@drawable/ic_menu_vk"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    style="@style/menu_line_text"
-                    android:text="@string/menu_vk"/>
-            </LinearLayout>
-        </libs.MaterialRippleLayout>
-        <libs.MaterialRippleLayout style="@style/menu_ripple">
-            <LinearLayout
-                style="@style/menu_line_sub"
-                android:id="@+id/menu_vk_search"
-                android:background="?drawableVKSubLine"
-                android:visibility="gone" >
-                <ImageView
-                    android:src="@drawable/ic_menu_vk_search"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:id="@+id/textStoredSearch"
-                    style="@style/menu_line_text" />
-            </LinearLayout>
-        </libs.MaterialRippleLayout>
-        <libs.MaterialRippleLayout style="@style/menu_ripple">
-            <LinearLayout
-                style="@style/menu_line_sub"
-                android:id="@+id/menu_vk_popular"
-                android:background="?drawableVKSubLine" >
-                <ImageView
-                    android:src="@drawable/ic_menu_vk_popular"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    style="@style/menu_line_text"
-                    android:text = "@string/menu_vk_popular" />
-            </LinearLayout>
-        </libs.MaterialRippleLayout>
-        <libs.MaterialRippleLayout style="@style/menu_ripple">
-            <LinearLayout
-                style="@style/menu_line_sub"
-                android:id="@+id/menu_vk_recommendations"
-                android:background="?drawableVKSubLine" >
-                <ImageView
-                    android:src="@drawable/ic_menu_vk_popular"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    style="@style/menu_line_text"
-                    android:text = "@string/menu_vk_recommendations" />
-            </LinearLayout>
-        </libs.MaterialRippleLayout>
-
-        <libs.MaterialRippleLayout style="@style/menu_ripple">
-            <LinearLayout
-                style="@style/menu_line"
                 android:id="@+id/menu_device"
                 android:background="?colorFolders" >
                 <ImageView

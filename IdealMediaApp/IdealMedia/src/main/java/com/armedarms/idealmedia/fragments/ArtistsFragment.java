@@ -3,23 +3,20 @@ package com.armedarms.idealmedia.fragments;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.androidquery.util.AQUtility;
-import com.armedarms.idealmedia.NavigationActivity;
 import com.armedarms.idealmedia.R;
 import com.armedarms.idealmedia.adapters.ArtistsAdapter;
 import com.armedarms.idealmedia.domain.Track;
 import com.armedarms.idealmedia.tasks.TaskGetArtists;
 import com.armedarms.idealmedia.utils.FileUtils;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
 
 import java.util.ArrayList;
 
@@ -68,10 +65,6 @@ public class ArtistsFragment extends BaseFragment implements TaskGetArtists.OnTa
                 OnTaskResult(tracks);
             }
         }.execute();
-
-        Tracker t = ((NavigationActivity)getActivity()).getTracker(NavigationActivity.TrackerName.APP_TRACKER);
-        t.setScreenName("Artists");
-        t.send(new HitBuilders.AppViewBuilder().build());
     }
 
     @Override
